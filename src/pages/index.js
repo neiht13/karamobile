@@ -8,24 +8,52 @@ import {
   Link,
   BlockTitle,
 } from 'konsta/react';
+import React, {useEffect, useState} from "react";
+import { getFirestore,collection, getDocs, doc, setDoc } from "firebase/firestore";
+import firebaseApp from "./../firebase/config";
+import {data} from "autoprefixer";
+import {log} from "next/dist/server/typescript/utils";
 
+const db = getFirestore(firebaseApp)
+
+export const getStaticProps = async () => {
+    const res = await fetch('http://localhost:3000/api/welcome')
+    const listBai = await res.json()
+    return { props: { listBai } }
+}
 export default function Home() {
-
-    let listBai = [
-        {
+    const [listBai, setListBai] = useState([])
+    useEffect (()=>{
+            const li = getDocs(collection(db, 'kara')).then(r=>{
+                const data = r.docs.map(doc => doc.data())
+                setListBai(data)
+                }
+            )
+    },[listBai])
+    const data = {
         tenBai:"Yellow Submarine",
         nguoiHat:"Beatles",
         linkYoutube: "https://www.youtube.com/watch?v=07BWY00MzZc",
-    } ,{
-        tenBai:"Yellow Submarine",
-        nguoiHat:"Beatles",
-        linkYoutube: "https://www.youtube.com/watch?v=spNpLl9NslA",
-    } ,{
-        tenBai:"Yellow Submarine",
-        nguoiHat:"Beatles",
-        linkYoutube: "https://www.youtube.com/watch?v=lxPeCtiXor8",
+    };
+
+    const res = () =>  {
+        setDoc(doc(db, "kara", (Math.random() + 1).toString(36).substring(7)), data).then(r  => console.log(r));
     }
-    ]
+    // let listBai = [
+    //     {
+    //     tenBai:"Yellow Submarine",
+    //     nguoiHat:"Beatles",
+    //     linkYoutube: "https://www.youtube.com/watch?v=07BWY00MzZc",
+    // } ,{
+    //     tenBai:"Yellow Submarine",
+    //     nguoiHat:"Beatles",
+    //     linkYoutube: "https://www.youtube.com/watch?v=spNpLl9NslA",
+    // } ,{
+    //     tenBai:"Yellow Submarine",
+    //     nguoiHat:"Beatles",
+    //     linkYoutube: "https://www.youtube.com/watch?v=lxPeCtiXor8",
+    // }
+    // ]
 
   return (
       <Page>
@@ -38,7 +66,7 @@ export default function Home() {
         </Block>
 
           <BlockTitle>Bài hát</BlockTitle>
-          <List strongIos outlineIos>
+          {listBai && listBai.length > 0 &&  <List strongIos outlineIos>
               {
 
                   listBai.map(bai=>{
@@ -62,7 +90,10 @@ export default function Home() {
                   })
               }
 
-          </List>
+          </List>}
+          <Block strong className="flex space-x-4">
+              <Button onClick={res}>Cham diem</Button>
+          </Block>
       </Page>
   );
 }

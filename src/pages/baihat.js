@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Page,
     Navbar,
@@ -16,6 +16,29 @@ export default function ProgressbarPage() {
     const searchParams = useSearchParams()
     const tenBai = searchParams.get('tenBai')
     console.log(tenBai)
+
+    useEffect( () => {
+        try {
+            let your_vercel_api_token_here="ff8c1299-9cba-483b-9b03-a394d0ee9858";
+            const createEdgeConfig =  fetch(
+                'https://api.vercel.com/v1/edge-config',
+                {
+                    method: 'POST',
+                    headers: {
+                        Authorization: `Bearer ${your_vercel_api_token_here}`,
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        slug: 'baihat',
+                    }),
+                },
+            );
+            const result =  createEdgeConfig.json();
+            console.log(result);
+        } catch (error) {
+            console.log(error);
+        }
+    },[])
 
     return (
         <Page>
