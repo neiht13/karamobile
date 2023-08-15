@@ -16,11 +16,6 @@ import {log} from "next/dist/server/typescript/utils";
 
 const db = getFirestore(firebaseApp)
 
-export const getStaticProps = async () => {
-    const res = await fetch('http://localhost:3000/api/welcome')
-    const listBai = await res.json()
-    return { props: { listBai } }
-}
 export default function Home() {
     const [listBai, setListBai] = useState([])
     useEffect (()=>{
