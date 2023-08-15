@@ -1,12 +1,12 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "LaslesVPN",
-  "short_name": "LaslesVPN",
+  "name": "mKara",
+  "short_name": "mKara",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#F53838",
-  "description": "LaslesVPN Best VPN For Privacy, Country and Cheapest.",
+  "theme_color": "#0000FF",
+  "description": "",
   "icons": [
     {
       "src": "/favicon/android-icon-36x36.png",
