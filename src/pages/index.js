@@ -13,18 +13,20 @@ import { getFirestore,collection, getDocs, doc, setDoc } from "firebase/firestor
 import firebaseApp from "./../firebase/config";
 import {data} from "autoprefixer";
 import {log} from "next/dist/server/typescript/utils";
+import SeoHead from "../../component/SeoHead";
 
 const db = getFirestore(firebaseApp)
 
 export default function Home() {
     const [listBai, setListBai] = useState([])
+    const [update, setUpdate] = useState(false)
     useEffect (()=>{
             const li = getDocs(collection(db, 'kara')).then(r=>{
                 const data = r.docs.map(doc => doc.data())
                 setListBai(data)
                 }
             )
-    },[listBai])
+    },[update])
     const data = {
         tenBai:"Yellow Submarine",
         nguoiHat:"Beatles",
@@ -33,6 +35,7 @@ export default function Home() {
 
     const res = () =>  {
         setDoc(doc(db, "kara", (Math.random() + 1).toString(36).substring(7)), data).then(r  => console.log(r));
+        setUpdate(update => !update);
     }
     // let listBai = [
     //     {
@@ -51,6 +54,8 @@ export default function Home() {
     // ]
 
   return (
+      <>
+          <SeoHead title={'mKara'}/>
       <Page>
         <Navbar title="VNPT Đồng Tháp" />
 
@@ -90,5 +95,6 @@ export default function Home() {
               <Button onClick={res}>Cham diem</Button>
           </Block>
       </Page>
+          </>
   );
 }
