@@ -19,14 +19,34 @@ const db = getFirestore(firebaseApp)
 
 export default function Home() {
     const [listBai, setListBai] = useState([])
+    const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
     useEffect (()=>{
-            const li = getDocs(collection(db, 'kara')).then(r=>{
+        getDocs(collection(db, 'kara')).then(r=>{
                 const data = r.docs.map(doc => doc.data())
                 setListBai(data)
                 }
             )
-    },[update])
+        getDocs(collection(db, 'scores')).then(r=>{
+                const data = r.docs.map(doc => doc.data())
+                setListScores(data)
+                }
+            )
+
+
+
+    },[])
+    listBai.forEach((b,i)=>{
+        let sum = 0;
+        let tt = 0;
+        listScores.filter(l => l.name === b.tenBai).forEach(i=>{
+            sum += i.score
+            tt++;
+        })
+        console.log(sum)
+        listBai[i].scoreTB = sum/tt
+    })
+    console.log('list', listBai)
     const data = {
         tenBai:"Yellow Submarine",
         nguoiHat:"Beatles",
@@ -53,6 +73,17 @@ export default function Home() {
     // }
     // ]
 
+
+const tb = (bai) => {
+    let sum = 0;
+    let tt = 0;
+    listScores.filter(l => l.name === bai.tenBai).forEach(i=>{
+        sum += i.score
+        tt++;
+    })
+    console.log(sum)
+    return sum/tt;
+}
   return (
       <>
           <SeoHead title={'mKara'}/>
@@ -76,7 +107,7 @@ export default function Home() {
                           href={"/baihat?tenBai=" + bai.tenBai}
                             chevronMaterial={false}
                           title={bai.tenBai}
-                          after="$15"
+                          after={bai.scoreTB}
                           subtitle={bai.nguoiHat}
                           text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus."
                           media={

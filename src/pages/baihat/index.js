@@ -10,6 +10,11 @@ import {
     SegmentedButton, Button,
 } from 'konsta/react';
 import {useSearchParams} from "next/navigation";
+import {doc, getFirestore, setDoc} from "firebase/firestore";
+import firebaseApp from "@/firebase/config";
+
+
+const db = getFirestore(firebaseApp)
 
 export default function ProgressbarPage() {
     const [progress, setProgress] = useState(0);
@@ -40,6 +45,13 @@ export default function ProgressbarPage() {
         }
     },[])
 
+    const chamdiem = () =>  {
+        setDoc(doc(db, "scores", (Math.random() + 1).toString(36).substring(7)), {
+            name: tenBai,
+            score: progress * 10,
+            user: 'naux'
+        }).then(r  => console.log(r));
+    }
     return (
         <Page>
             <Navbar
@@ -119,7 +131,7 @@ export default function ProgressbarPage() {
                 </Segmented>
             </Block>
             <Block strong className="flex space-x-4">
-                <Button>Cham diem</Button>
+                <Button onClick={chamdiem}>Cham diem</Button>
             </Block>
 
         </Page>
