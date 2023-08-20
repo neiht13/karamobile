@@ -12,7 +12,6 @@ function MapExample(props) {
     const geoFindMe = () => {
         const success = (position) => {
             setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
-            console.log(JSON.stringify({lat: position.coords.latitude, lng: position.coords.longitude}))
         }
         const error = () => {
             alert("Unable to retrieve your location");
@@ -29,7 +28,7 @@ function MapExample(props) {
         if(container != null){
             container._leaflet_id = null;
         }
-        let map = L.map('map').setView([center.lat, center.lng], zoom);
+        let map = L.map('map').setView([currentLocation.lat, currentLocation.lng], zoom);
         L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             maxZoom: 17,
             subdomains:['mt0','mt1','mt2','mt3'],
@@ -37,14 +36,11 @@ function MapExample(props) {
         }).addTo(map);
 
 
-        L.control.locate({
-            icon: 'fa-solid fa-location-crosshairs', // Icon của nút
-            showPopup: false, // Không hiển thị popup khi bấm nút
-            metric: false, // Sử dụng đơn vị đo lường hệ thập phân
-            strings: {
-                title: "Hiển thị vị trí hiện tại"
-            },
-        }).addTo(map);
+        L.control.locate().addTo(map);
+        map.locate({setView: true, maxZoom: map.getZoom()});
+        L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
+            .bindPopup("Vị trí hiện tại.").openPopup();
+
         let isDragging = false;
         map.on('dragstart', function () {
             isDragging = true;
@@ -70,13 +66,10 @@ function MapExample(props) {
                 iconSize: [20, 20],
                 className: "text-primary"
             });
-            let m = L.marker([parseFloat(marker.lat), parseFloat(marker.lng)],{icon: fontAwesomeIcon}).addTo(map)
-            m.bindPopup(`<a href="login">${marker.address}</a>`).openPopup();
+            L.marker([parseFloat(marker.lat), parseFloat(marker.lng)],{icon: fontAwesomeIcon}).addTo(map).bindPopup(`<a href="login">${marker.address}</a>`).openPopup();
         })
-            L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
-                .bindPopup("Bạn đang ở trong bán kính mét từ điểm này.").openPopup();
 
-        map.locate({setView: true, maxZoom: map.getZoom()});
+
 
         map.on('click', function(ev) {
             console.log(ev)
@@ -103,7 +96,6 @@ function MapExample(props) {
 
     return (
         <>
-            <button id="find-me" onClick={geoFindMe}>Show my location</button><br />
             <div id="map" style={{height:  height}}></div>
         </>
     );
