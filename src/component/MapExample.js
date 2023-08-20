@@ -31,7 +31,7 @@ function MapExample(props) {
         map.on('mousemove', function (e) {
             if (isDragging) {
                 console.log(e)
-                map.setView(e.latlng, 17);
+                map.setView(e.latlng, map.getZoom());
             }
         });
 
@@ -42,6 +42,16 @@ function MapExample(props) {
 
 
         })
+
+        L.control.locate({
+            position: 'topright', // Vị trí của nút vị trí hiện tại trên bản đồ
+            icon: 'fa fa-location-arrow', // Icon của nút
+            showPopup: false, // Không hiển thị popup khi bấm nút
+            metric: false, // Sử dụng đơn vị đo lường hệ thập phân
+            strings: {
+                title: "Hiển thị vị trí hiện tại"
+            },
+        }).addTo(map);
 
 
         circles && circles.forEach(circle=>{
