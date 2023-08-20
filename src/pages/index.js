@@ -126,7 +126,7 @@ const tb = (bai) => {
               <MyAwesomeMap zoom={16}
                             center={{lat: '10.4552072',lng:'105.629261'}}
                             markers={[
-                                {lat: '10.4552072',lng:'105.629261', address:'My Location'},
+                                {lat: '10.4552072',lng:'105.629', address:'My Location'},
                                 {lat: '10.4552',lng:'105.661', address:'My Location 2'},
                                 {lat: '10.45072',lng:'105.6261', address:'My Location 3'},
                                 {lat: '10.45572',lng:'105.61', address:'My Location  4'},
