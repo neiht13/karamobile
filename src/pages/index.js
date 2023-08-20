@@ -40,11 +40,11 @@ export default function Home() {
                 console.log(data)
                 }
             )
-        getDocs(collection(db, 'scores')).then(r=>{
-                const data = r.docs.map(doc => doc.data())
-                setListScores(data)
-                }
-            )
+        // getDocs(collection(db, 'scores')).then(r=>{
+        //         const data = r.docs.map(doc => doc.data())
+        //         setListScores(data)
+        //         }
+        //     )
 
 
 
@@ -67,14 +67,14 @@ export default function Home() {
     };
 
     const res = () =>  {
-        setDoc(doc(db, "kara", (Math.random() + 1).toString(36).substring(7)), {
-            name: 'Thein',
-            user: 'naux',
-            lis: [{name: 'Thein',
-                user: 'naux', list:[{name: 'Thein',
-                    user: 'naux',}]},{name: 'Thein',
-                user: 'naux',}]
-        }).then(r  => console.log(r));
+        // setDoc(doc(db, "kara", (Math.random() + 1).toString(36).substring(7)), {
+        //     name: 'Thein',
+        //     user: 'naux',
+        //     lis: [{name: 'Thein',
+        //         user: 'naux', list:[{name: 'Thein',
+        //             user: 'naux',}]},{name: 'Thein',
+        //         user: 'naux',}]
+        // }).then(r  => console.log(r));
     }
     // let listBai = [
     //     {
@@ -94,14 +94,14 @@ export default function Home() {
 
 
 const tb = (bai) => {
-    let sum = 0;
-    let tt = 0;
-    listScores.filter(l => l.name === bai.tenBai).forEach(i=>{
-        sum += i.score
-        tt++;
-    })
-    console.log(sum)
-    return sum/tt;
+    // let sum = 0;
+    // let tt = 0;
+    // listScores.filter(l => l.name === bai.tenBai).forEach(i=>{
+    //     sum += i.score
+    //     tt++;
+    // })
+    // console.log(sum)
+    // return sum/tt;
 }
 
     // const { data: session, status } = useSession()
@@ -111,17 +111,15 @@ const tb = (bai) => {
       <>
           <SeoHead title={'mKara'}/>
       <Page>
-          <Navbar title="VNPT Đồng Tháp" >
+          <Navbar title="VNPT Đồng Tháp" right={<a href={'/login'}>Login</a>}>
 
-          <Button className='left-0' href={'/login'}>Login</Button>
           </Navbar>
-          {isLoggedIn ? <h1>Chào mừng đến với trang cá nhân!</h1> : <p>Vui lòng đăng nhập.</p>}
 
-        <Block strong>
-          <p className="text-center font-bold p-1">
-            CUỘC THI HÁT KARAOKE MỪNG THÀNH LẬP NGÀNH
-          </p>
-        </Block>
+        {/*<Block strong>*/}
+        {/*  <p className="text-center font-bold p-1">*/}
+        {/*    CUỘC THI HÁT KARAOKE MỪNG THÀNH LẬP NGÀNH*/}
+        {/*  </p>*/}
+        {/*</Block>*/}
           <Block>
               <MyAwesomeMap zoom={16}
                             center={{lat: '10.4552072',lng:'105.629261'}}

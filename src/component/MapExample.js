@@ -48,24 +48,24 @@ function MapExample(props) {
         L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
             .bindPopup("Vị trí hiện tại.").openPopup();
 
-        let isDragging = false;
-        map.on('dragstart', function () {
-            isDragging = true;
-            console.log('dragstart')
-        });
-
-        map.on('dragend', function () {
-            isDragging = false;
-            console.log('dragend')
-
-        });
-
-        map.on('mousemove', function (e) {
-            if (isDragging) {
-                console.log(e)
-                map.setView(e.latlng, map.getZoom(),  { animate: false });
-            }
-        });
+        // let isDragging = false;
+        // map.on('dragstart', function () {
+        //     isDragging = true;
+        //     console.log('dragstart')
+        // });
+        //
+        // map.on('dragend', function () {
+        //     isDragging = false;
+        //     console.log('dragend')
+        //
+        // });
+        //
+        // map.on('mousemove', function (e) {
+        //     if (isDragging) {
+        //         console.log(e)
+        //         map.setView(e.latlng, map.getZoom(),  { animate: false });
+        //     }
+        // });
 
         markers && markers.forEach(marker =>{
             const fontAwesomeIcon = L.divIcon({
