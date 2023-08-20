@@ -44,26 +44,25 @@ function MapExample(props) {
             strings: {
                 title: "Hiển thị vị trí hiện tại"
             },
-            onClick: e=> map.setView([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)], 17)
         }).addTo(map);
-        // let isDragging = false;
-        // map.on('dragstart', function () {
-        //     isDragging = true;
-        //     console.log('dragstart')
-        // });
-        //
-        // map.on('dragend', function () {
-        //     isDragging = false;
-        //     console.log('dragend')
-        //
-        // });
-        //
-        // map.on('mousemove', function (e) {
-        //     if (isDragging) {
-        //         console.log(e)
-        //         map.setView(e.latlng, map.getZoom(),  { animate: false });
-        //     }
-        // });
+        let isDragging = false;
+        map.on('dragstart', function () {
+            isDragging = true;
+            console.log('dragstart')
+        });
+
+        map.on('dragend', function () {
+            isDragging = false;
+            console.log('dragend')
+
+        });
+
+        map.on('mousemove', function (e) {
+            if (isDragging) {
+                console.log(e)
+                map.setView(e.latlng, map.getZoom(),  { animate: false });
+            }
+        });
 
         markers && markers.forEach(marker =>{
             const fontAwesomeIcon = L.divIcon({
