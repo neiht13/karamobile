@@ -49,91 +49,101 @@ export default function ProgressbarPage() {
         setDoc(doc(db, "scores", (Math.random() + 1).toString(36).substring(7)), {
             name: tenBai,
             score: progress * 10,
-            user: 'naux'
+            user: 'naux',
+            lis: [{name: tenBai,
+                score: progress * 10,
+                user: 'naux', list:[{name: tenBai,
+                    score: progress * 10,
+                    user: 'naux',}]},{name: tenBai,
+                score: progress * 10,
+                user: 'naux',}]
         }).then(r  => console.log(r));
     }
-    return (
-        <Page>
-            <Navbar
-                left={
-                    <NavbarBackLink text="Back" onClick={() => history.back()} />
-                }
-                title={tenBai}
-            />
 
-            <BlockTitle>Cham Diem</BlockTitle>
-            <Block strong insetMaterial outlineIos>
-                <div className="my-4">
-                    <Progressbar progress={progress} />
-                </div>
-                <Segmented raised>
-                    <SegmentedButton
-                        rounded
-                        active={progress === 0.1}
-                        onClick={() => setProgress(0.1)}
-                    >
-                        1
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.2}
-                        onClick={() => setProgress(0.2)}
-                    >
-                        2
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.3}
-                        onClick={() => setProgress(0.3)}
-                    >
-                        3
-                    </SegmentedButton>
-                </Segmented>
-                <br/>
-                <Segmented raised>
-                    <SegmentedButton
-                        active={progress === 0.4}
-                        onClick={() => setProgress(0.4)}
-                    >
-                        4
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.5}
-                        onClick={() => setProgress(0.5)}
-                    >
-                        5
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.6}
-                        onClick={() => setProgress(0.6)}
-                    >
-                        6
-                    </SegmentedButton>
-                </Segmented>
-                <br/>
-                <Segmented raised>
-                    <SegmentedButton
-                        active={progress === 0.7}
-                        onClick={() => setProgress(0.7)}
-                    >
-                        7
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.8}
-                        onClick={() => setProgress(0.8)}
-                    >
-                        8
-                    </SegmentedButton>
-                    <SegmentedButton
-                        active={progress === 0.9}
-                        onClick={() => setProgress(0.9)}
-                    >
-                        9
-                    </SegmentedButton>
-                </Segmented>
-            </Block>
-            <Block strong className="flex space-x-4">
-                <Button onClick={chamdiem}>Cham diem</Button>
-            </Block>
 
-        </Page>
-    );
+        return (
+            <Page>
+                <Navbar
+                    left={
+                        <NavbarBackLink text="Back" onClick={() => history.back()} />
+                    }
+                    title={tenBai}
+                />
+
+                <BlockTitle>Cham Diem</BlockTitle>
+                <Block strong insetMaterial outlineIos>
+                    <div className="my-4">
+                        <Progressbar progress={progress} />
+                    </div>
+                    <Segmented raised>
+                        <SegmentedButton
+                            rounded
+                            active={progress === 0.1}
+                            onClick={() => setProgress(0.1)}
+                        >
+                            1
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.2}
+                            onClick={() => setProgress(0.2)}
+                        >
+                            2
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.3}
+                            onClick={() => setProgress(0.3)}
+                        >
+                            3
+                        </SegmentedButton>
+                    </Segmented>
+                    <br/>
+                    <Segmented raised>
+                        <SegmentedButton
+                            active={progress === 0.4}
+                            onClick={() => setProgress(0.4)}
+                        >
+                            4
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.5}
+                            onClick={() => setProgress(0.5)}
+                        >
+                            5
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.6}
+                            onClick={() => setProgress(0.6)}
+                        >
+                            6
+                        </SegmentedButton>
+                    </Segmented>
+                    <br/>
+                    <Segmented raised>
+                        <SegmentedButton
+                            active={progress === 0.7}
+                            onClick={() => setProgress(0.7)}
+                        >
+                            7
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.8}
+                            onClick={() => setProgress(0.8)}
+                        >
+                            8
+                        </SegmentedButton>
+                        <SegmentedButton
+                            active={progress === 0.9}
+                            onClick={() => setProgress(0.9)}
+                        >
+                            9
+                        </SegmentedButton>
+                    </Segmented>
+                </Block>
+                <Block strong className="flex space-x-4">
+                    <Button onClick={chamdiem}>Cham diem</Button>
+                </Block>
+
+            </Page>
+        );
+
 }
