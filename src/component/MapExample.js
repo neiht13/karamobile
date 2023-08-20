@@ -4,31 +4,31 @@ function MapExample(props) {
     const {currentUser, markers, circles, center, zoom, height, address} = props
     const mapRef = React.useRef(null);
 
-    const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
-    useEffect(() => {
-        geoFindMe()
-    },[])
-
-    const geoFindMe = () => {
-        const success = (position) => {
-            setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
-        }
-        const error = () => {
-            alert("Unable to retrieve your location");
-        }
-        if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
-        } else {
-            navigator.geolocation.getCurrentPosition(success,error);
-        }
-     }
+    // const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
+    // useEffect(() => {
+    //     geoFindMe()
+    // },[])
+    //
+    // const geoFindMe = () => {
+    //     const success = (position) => {
+    //         setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
+    //     }
+    //     const error = () => {
+    //         alert("Unable to retrieve your location");
+    //     }
+    //     if (!navigator.geolocation) {
+    //         alert("Geolocation is not supported by your browser");
+    //     } else {
+    //         navigator.geolocation.getCurrentPosition(success,error);
+    //     }
+    //  }
 
     useEffect(()=>{
         let container = L.DomUtil.get('map');
         if(container != null){
             container._leaflet_id = null;
         }
-        let map = L.map('map').setView([currentLocation.lat, currentLocation.lng], zoom);
+        let map = L.map('map').setView([center.lat, center.lng], zoom);
         const googleStreet = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             maxZoom: 17,
             subdomains:['mt0','mt1','mt2','mt3'],
@@ -45,8 +45,8 @@ function MapExample(props) {
         }).addTo(map);
 
 
-        L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
-            .bindPopup("Vị trí hiện tại.").openPopup();
+        // L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
+        //     .bindPopup("Vị trí hiện tại.").openPopup();
 
         // let isDragging = false;
         // map.on('dragstart', function () {
@@ -99,7 +99,7 @@ function MapExample(props) {
             }).addTo(map);
         })
 
-    },[currentLocation])
+    },[ ])
 
     return (
         <>

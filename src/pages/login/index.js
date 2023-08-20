@@ -85,11 +85,11 @@ export default function FormInputsPage() {
                 left={
                     <NavbarBackLink text="Back" onClick={() => history.back()} />
                 }
-                title='Đăng nhập'
+                title='Đăng nhập/Đăng ký'
             />
 
 
-            <BlockTitle>Outline</BlockTitle>
+            <BlockTitle>Đăng nhập</BlockTitle>
             <List strongIos insetIos>
 
                 <ListInput
@@ -98,7 +98,7 @@ export default function FormInputsPage() {
                     type="email"
                     placeholder="Your e-mail"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i class="fa-brands fa-twitter" />}
+                    media={<i className="fa-solid fa-at fa-spin"></i>}
                 />
 
                 <ListInput
@@ -107,19 +107,19 @@ export default function FormInputsPage() {
                     type="password"
                     placeholder="Your password"
                     onChange={e=>setPassword(e.target.value)}
-                    media={<i class="fa-brands fa-twitter" />}
+                    media={<i className="fa-solid fa-key fa-flip"></i>}
                 />
 
-                <ListInput
+                {1===0 & <ListInput
                     outline
                     label="Textarea"
                     type="textarea"
                     placeholder="Bio"
                     media={<i class="fa-brands fa-twitter" />}
                     inputClassName="!h-20 resize-none"
-                />
+                />}
             </List>
-            <Button onClick={handleLogin}>Login</Button>
+            <Button onClick={handleLogin}>Đăng nhập</Button>
         </Page>
     );
 }
