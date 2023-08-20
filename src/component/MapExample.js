@@ -29,15 +29,22 @@ function MapExample(props) {
             container._leaflet_id = null;
         }
         let map = L.map('map').setView([currentLocation.lat, currentLocation.lng], zoom);
-        L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+        const googleStreet = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
             maxZoom: 17,
             subdomains:['mt0','mt1','mt2','mt3'],
             attribution: '<a href="https://maps.google.com">Google Maps</a> &copy; <a href="http://vnptdongthap.com.vn/">VNPT Đồng Tháp</a>'
         }).addTo(map);
+        const googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+            maxZoom: 20,
+            subdomains:['mt0','mt1','mt2','mt3']
+        });
+        let layerControl = L.control.layers({
+            'Cơ bản': googleStreet, // Lớp bản đồ cơ sở
+        }, {
+            'Vệ tinh': googleSat, // Lớp dữ liệu bổ sung 1
+        }).addTo(map);
 
 
-        L.control.locate().addTo(map);
-        map.locate({setView: true, maxZoom: map.getZoom()});
         L.marker([parseFloat(currentLocation.lat), parseFloat(currentLocation.lng)]).addTo(map)
             .bindPopup("Vị trí hiện tại.").openPopup();
 
