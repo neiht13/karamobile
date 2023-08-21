@@ -109,7 +109,6 @@ const tb = (bai) => {
     };
   return (
       <>
-          <SeoHead title={'mKara'}/>
       <Page>
           <Navbar title="Khoai Lang Châu Thành" right={
               !auth.currentUser ?
