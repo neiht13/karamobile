@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Page,
     Navbar,
@@ -7,19 +7,26 @@ import {
     List,
     ListInput, Button,
 } from 'konsta/react';
-import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {createUserWithEmailAndPassword, getAuth,updateProfile, signInWithEmailAndPassword} from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
 import firebaseApp from "@/firebase/config";
 import {signIn} from "next-auth/react";
 import {useAuth} from "@/firebase/authContext";
 import {useRouter} from "next/router";
+
 const db = getFirestore(firebaseApp)
+const auth = getAuth(firebaseApp);
 
 
 export default function FormInputsPage() {
     const [name, setName] = useState({ value: '', changed: false });
     const [demoValue, setDemoValue] = useState('');
 
+    // useEffect(()=>{
+    //     updateProfile(auth.currentUser, {
+    //         displayName: "Thein", photoURL: "https://scontent.fsgn2-6.fna.fbcdn.net/v/t39.30808-6/351758889_212144804531630_4603994211041501644_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=SiqQHcnuStQAX_-0OeR&_nc_ht=scontent.fsgn2-6.fna&oh=00_AfBOsuAv3oa1q2_aIKoV_X9L_aFv0bnLJmWfx6aDuh7vEw&oe=64E84477"
+    //     })
+    // },[])
     const onNameChange = (e) => {
         setName({ value: e.target.value, changed: true });
     };

@@ -13,7 +13,7 @@ import { Link as LinkScroll } from "react-scroll";
 
 import React, {useEffect, useRef, useState} from "react";
 import { getFirestore,collection, getDocs, doc, setDoc } from "firebase/firestore";
-import firebaseApp from "./../firebase/config";
+import firebaseApp from "@/firebase/config";
 import {data} from "autoprefixer";
 import {log} from "next/dist/server/typescript/utils";
 import SeoHead from "@/component/SeoHead";
@@ -166,10 +166,10 @@ const tb = (bai) => {
 
         {/*  </Block>*/}
 
-          {/*<NhatKy/>*/}
-          {/*<Block strong className="flex space-x-4">*/}
-          {/*    <Button onClick={res}>Lưu</Button>*/}
-          {/*</Block>*/}
+          <NhatKy/>
+          <Block strong className="flex space-x-4">
+              <Button onClick={res}>Lưu</Button>
+          </Block>
           <Block strong className="flex space-x-4">
           </Block>
       </Page>

@@ -5,21 +5,7 @@ function MapExample(props) {
     const mapRef = React.useRef(null);
 
     const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
-    useEffect(() => {
-        if (mapRef.current) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    const { latitude, longitude } = position.coords;
-                    L.map('map').setView([latitude, longitude], 17);
-                    console.log(latitude)
-                    console.log(longitude)
-                },
-                (error) => {
-                    console.error(error);
-                }
-            );
-        }
-    }, []);
+
 
 
     // useEffect(() => {

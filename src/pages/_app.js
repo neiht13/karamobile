@@ -2,12 +2,32 @@ import '@/styles/globals.css'
 import { App } from 'konsta/react';
 import { SessionProvider } from "next-auth/react"
 import { AuthProvider } from '@/firebase/authContext';
+import React, {useEffect, useState} from "react";
+import {Link as LinkScroll} from "react-scroll";
+import Nav from "@/component/Nav";
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+useEffect(()=>{
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  const isAndroid = /Android/.test(navigator.userAgent);
+
+  if (isIOS) {
+    console.log('Đây là iOS');
+    setIos(true)
+  } else if (isAndroid) {
+    console.log('Đây là Android');
+  } else {
+    console.log('Không phải iOS hoặc Android');
+  }
+},[])
+  const [ios, setIos] = useState(false)
+
   return(
       <AuthProvider>
-    <App theme="ios">
+    <App theme={ios ? "ios": "material"}>
       <Component {...pageProps} />
+      <Nav/>
     </App>
       </AuthProvider>)
 }
