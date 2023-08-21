@@ -4,24 +4,24 @@ function MapExample(props) {
     const {currentUser, markers, circles, center, zoom, height, address} = props
     const mapRef = React.useRef(null);
 
-    // const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
-    // useEffect(() => {
-    //     geoFindMe()
-    // },[])
-    //
-    // const geoFindMe = () => {
-    //     const success = (position) => {
-    //         setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
-    //     }
-    //     const error = () => {
-    //         alert("Unable to retrieve your location");
-    //     }
-    //     if (!navigator.geolocation) {
-    //         alert("Geolocation is not supported by your browser");
-    //     } else {
-    //         navigator.geolocation.getCurrentPosition(success,error);
-    //     }
-    //  }
+    const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
+    useEffect(() => {
+        geoFindMe()
+    },[])
+
+    const geoFindMe = () => {
+        const success = (position) => {
+            setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
+        }
+        const error = () => {
+            alert("Unable to retrieve your location");
+        }
+        if (!navigator.geolocation) {
+            alert("Geolocation is not supported by your browser");
+        } else {
+            navigator.geolocation.getCurrentPosition(success,error);
+        }
+     }
 
     useEffect(()=>{
         let container = L.DomUtil.get('map');

@@ -85,7 +85,7 @@ export default function FormInputsPage() {
                 left={
                     <NavbarBackLink text="Back" onClick={() => history.back()} />
                 }
-                title='Đăng nhập/Đăng ký'
+                title='Đăng nhập/ Đăng ký'
             />
 
 
@@ -110,14 +110,14 @@ export default function FormInputsPage() {
                     media={<i className="fa-solid fa-key fa-flip"></i>}
                 />
 
-                {1===0 & <ListInput
-                    outline
-                    label="Textarea"
-                    type="textarea"
-                    placeholder="Bio"
-                    media={<i class="fa-brands fa-twitter" />}
-                    inputClassName="!h-20 resize-none"
-                />}
+                {/*<ListInput*/}
+                {/*    outline*/}
+                {/*    label="Textarea"*/}
+                {/*    type="textarea"*/}
+                {/*    placeholder="Bio"*/}
+                {/*    media={<i class="fa-brands fa-twitter" />}*/}
+                {/*    inputClassName="!h-20 resize-none"*/}
+                {/*/>*/}
             </List>
             <Button onClick={handleLogin}>Đăng nhập</Button>
         </Page>
