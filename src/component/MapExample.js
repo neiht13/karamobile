@@ -6,22 +6,39 @@ function MapExample(props) {
 
     const [currentLocation, setCurrentLocation] = useState({lat: 0, lng: 0});
     useEffect(() => {
-        geoFindMe()
-    },[])
+        if (mapRef.current) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    L.map('map').setView([latitude, longitude], 17);
+                    console.log(latitude)
+                    console.log(longitude)
+                },
+                (error) => {
+                    console.error(error);
+                }
+            );
+        }
+    }, []);
 
-    const geoFindMe = () => {
-        const success = (position) => {
-            setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
-        }
-        const error = () => {
-            alert("Unable to retrieve your location");
-        }
-        if (!navigator.geolocation) {
-            alert("Geolocation is not supported by your browser");
-        } else {
-            navigator.geolocation.getCurrentPosition(success,error);
-        }
-     }
+
+    // useEffect(() => {
+    //     geoFindMe()
+    // },[])
+    //
+    // const geoFindMe = () => {
+    //     const success = (position) => {
+    //         setCurrentLocation({lat: position.coords.latitude, lng: position.coords.longitude})
+    //     }
+    //     const error = () => {
+    //         alert("Unable to retrieve your location");
+    //     }
+    //     if (!navigator.geolocation) {
+    //         alert("Geolocation is not supported by your browser");
+    //     } else {
+    //         navigator.geolocation.getCurrentPosition(success,error);
+    //     }
+    //  }
 
     useEffect(()=>{
         let container = L.DomUtil.get('map');
@@ -103,7 +120,7 @@ function MapExample(props) {
 
     return (
         <>
-            <div id="map" style={{height:  height}}></div>
+            <div id="map" ref={mapRef} style={{height:  height}}></div>
         </>
     );
 }
