@@ -38,7 +38,7 @@ const Nav = (props) => {
                         : " border-transparent")
                 }
             >
-                <i className="fa-solid fa-home text-primary fa-xl"></i>
+                <i className="fa-solid fa-home text-primary"></i>
               Trang chủ
             </a><a
                 href={'nhatky'}
@@ -49,7 +49,7 @@ const Nav = (props) => {
                         : " border-transparent")
                 }
             >
-                <i className="fa-solid fa-list-check text-primary fa-xl"></i>
+                <i className="fa-solid fa-list-check text-primary"></i>
               Nhật ký
             </a>
               <a
@@ -61,7 +61,7 @@ const Nav = (props) => {
                         : " border-transparent")
                 }
             >
-                <i className="fa-solid fa-list-check text-primary fa-xl"></i>
+                <i className="fa-solid fa-lemon text-primary"></i>
               Nông sản
             </a>
               <a
@@ -73,7 +73,7 @@ const Nav = (props) => {
                         : " border-transparent")
                 }
             >
-                <i className="fa-solid fa-list-check text-primary fa-xl"></i>
+                <i className="fa-solid fa-stamp text-primary"></>
               Chứng nhận
             </a>
           </ul>
