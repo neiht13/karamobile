@@ -13,7 +13,7 @@ import { Link as LinkScroll } from "react-scroll";
 
 import React, {useEffect, useRef, useState} from "react";
 import { getFirestore,collection, getDocs, doc, setDoc } from "firebase/firestore";
-import firebaseApp from "./../firebase/config";
+import firebaseApp from "@/firebase/config";
 import {data} from "autoprefixer";
 import {log} from "next/dist/server/typescript/utils";
 import SeoHead from "@/component/SeoHead";
@@ -21,14 +21,13 @@ import {signOut, useSession} from "next-auth/react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
-import NhatKy from "@/component/NhatKy";
-import MobileChangelogEntry from "@/component/Timeline";
+import ChungNhan from "@/component/ChungNhan";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
 const MyAwesomeMap = dynamic(() => import("@/component/MapExample"), { ssr:false })
 
-export default function Home() {
+export default function ChungNha() {
     const [listBai, setListBai] = useState([])
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
@@ -135,7 +134,6 @@ const tb = (bai) => {
                   <ListItem
                       title="Sửa thông tin cá nhân"
                       link
-                      href={'/account'}
                       onClick={() => setPopoverOpened(false)}
                   />
                   <ListItem
@@ -168,31 +166,10 @@ const tb = (bai) => {
 
         {/*  </Block>*/}
 
-          {/*<NhatKy/>*/}
-          {/*<Block strong className="flex space-x-4">*/}
-          {/*    <Button onClick={res}>Lưu</Button>*/}
-          {/*</Block>*/}
-          {/*<ul className="mx-5 max-w-2xl md:mx-auto md:translate-x-28">*/}
-          {/*    {[*/}
-          {/*        {*/}
-          {/*            slug: 'est',*/}
-          {/*            type: 'changelog',*/}
-          {/*            publishedAt: '2023-08-21',*/}
-          {/*            title: 'Thien'*/}
-          {/*        },*/}
-          {/*        {*/}
-          {/*            slug: 'et',*/}
-          {/*            type: 'changelog',*/}
-          {/*            publishedAt: '2023-08-21',*/}
-          {/*            title: 'Thien'*/}
-          {/*        },*/}
-          {/*    ]*/}
-          {/*        .map((post) => (*/}
-          {/*            <li key={post.slug}>*/}
-          {/*                    <MobileChangelogEntry post={post} />*/}
-          {/*            </li>*/}
-          {/*        ))}*/}
-          {/*</ul>*/}
+          <ChungNhan/>
+          <Block strong className="flex space-x-4">
+              <Button onClick={res}>Lưu</Button>
+          </Block>
           <Block strong className="flex space-x-4">
           </Block>
       </Page>

@@ -2,7 +2,7 @@ import {BlockTitle, List, ListInput} from "konsta/react";
 import * as dayjs from 'dayjs'
 import {useState} from "react";
 
-const NongSan =()=>{
+const ChungNhan =()=>{
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     console.log(now)
     return (
@@ -11,23 +11,14 @@ const NongSan =()=>{
             <List strongIos insetIos>
                 <ListInput
                     outline
-                    label="Mã nông sản"
-                    type="text"
-                    disabled
-                    info="Không nhập dòng này"
-                    placeholder="Nhập tên công việc"
-                    media={<i class="fa-solid fa-heart"></i>}
-                />
-                <ListInput
-                    outline
-                    label="Tên nông sản"
+                    label="Tên chứng nhận"
                     type="text"
                     placeholder="Nhập tên công việc"
                     media={<i class="fa-solid fa-heart"></i>}
                 />
                 <ListInput
                     outline
-                    label="Quy cách đóng gói"
+                    label="Tên cơ sở sản xuất"
                     type="text"
                     placeholder="Nhập tên công việc"
                     media={<i class="fa-solid fa-heart"></i>}
@@ -35,21 +26,21 @@ const NongSan =()=>{
 
                 <ListInput
                     outline
-                    label="Cơ sở sản xuất"
+                    label="Địa chỉ"
                     type="text"
                     placeholder="Nhập tên công việc"
                     media={<i class="fa-solid fa-heart"></i>}
                 />
                 <ListInput
                     outline
-                    label="Thời hạn sử dụng"
+                    label="Diện tích"
                     type="text"
                     placeholder="Nhập tên công việc"
                     media={<i class="fa-solid fa-heart"></i>}
                 />
                 <ListInput
                     outline
-                    label="Loại chứng chỉ"
+                    label="Loại chứng nhận"
                     type="select"
                     dropdown
                     defaultValue=""
@@ -62,6 +53,13 @@ const NongSan =()=>{
                     <option value='USDA Organic'>&nbsp;USDA Organic</option>
                     <option value='EU Organic'>&nbsp;EU Organic</option>
                 </ListInput>
+                <ListInput
+                    outline
+                    label="Ngày hiệu lực"
+                    type="date"
+                    placeholder="Please choose..."
+                    media={<i class="fa-solid fa-heart"></i>}
+                />
 
 
                 <ListInput
@@ -77,4 +75,4 @@ const NongSan =()=>{
         </>
     )
 }
-export default NongSan;
+export default ChungNhan;
