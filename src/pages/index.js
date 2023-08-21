@@ -22,6 +22,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
+import MobileChangelogEntry from "@/component/Timeline";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -170,6 +171,20 @@ const tb = (bai) => {
           {/*<Block strong className="flex space-x-4">*/}
           {/*    <Button onClick={res}>Lưu</Button>*/}
           {/*</Block>*/}
+          <MobileChangelogEntry post={[
+              {
+                  slug: 'est',
+                  type: 'changelog',
+                  publishedAt: '2023-08-21',
+                  title: 'Thien'
+              },
+              {
+                  slug: 'est',
+                  type: 'changelog',
+                  publishedAt: '2023-08-21',
+                  title: 'Thien'
+              },
+          ]} />
           <Block strong className="flex space-x-4">
           </Block>
       </Page>

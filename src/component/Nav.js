@@ -26,7 +26,7 @@ const Nav = (props) => {
   const [activeLink, setActiveLink] = useState(null);
   const [scrollActive, setScrollActive] = useState(false);
   return (
-      <nav className="fixed lg:hidden bottom-0 left-0 right-0 z-20 shadow-t ">
+      <nav className="fixed bottom-0 left-0 right-0 z-20 shadow-t ">
         <div className="bg-white">
           <ul className="flex w-full justify-between items-center text-black-500">
             <a
@@ -70,10 +70,10 @@ const Nav = (props) => {
                     "mx-1 sm:mx-2 px-3 sm:px-4 py-2 flex flex-col items-center text-xs transition-all " +
                     (activeLink === "about"
                         ? "  border-orange-500 text-orange-500"
-                        : " border-transparent")
+                        : "  border-transparent")
                 }
             >
-                <i className="fa-solid fa-stamp text-primary"></>
+                <i className="fa-solid fa-stamp text-primary"></i>
               Chứng nhận
             </a>
           </ul>
