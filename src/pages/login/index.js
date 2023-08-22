@@ -5,7 +5,7 @@ import {
     NavbarBackLink,
     BlockTitle,
     List,
-    ListInput, Button,
+    ListInput, Button, Block,
 } from 'konsta/react';
 import {createUserWithEmailAndPassword, getAuth,updateProfile, signInWithEmailAndPassword} from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
@@ -126,7 +126,10 @@ export default function FormInputsPage() {
                 {/*    inputClassName="!h-20 resize-none"*/}
                 {/*/>*/}
             </List>
+            <Block strong inset>
+
             <Button onClick={handleLogin}>Đăng nhập</Button>
+            </Block>
         </Page>
     );
 }

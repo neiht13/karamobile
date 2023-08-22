@@ -24,6 +24,7 @@ import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import MobileChangelogEntry from "@/component/Timeline";
 import {useRouter} from "next/router";
+import TimelinePage from "@/component/Timeline";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -157,8 +158,8 @@ const tb = (bai) => {
           </Popover>
 
         {/*<Block strong>*/}
-        {/*  <p className="text-center font-bold p-1">*/}
-        {/*    CUỘC THI HÁT KARAOKE MỪNG THÀNH LẬP NGÀNH*/}
+        {/*  <p className="text-center text-primary font-bold p-1">*/}
+        {/*    TRANG CHỦ*/}
         {/*  </p>*/}
         {/*</Block>*/}
         {/*  <Block>*/}
@@ -177,6 +178,7 @@ const tb = (bai) => {
           {/*<NhatKy/>*/}
 
 
+          <TimelinePage/>
           <Block strong className="flex space-x-4">
           </Block>
       </Page>

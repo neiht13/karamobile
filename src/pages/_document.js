@@ -32,6 +32,7 @@ export default function Document() {
             <script src="https://unpkg.com/leaflet.locatecontrol@0.72.0/dist/L.Control.Locate.min.js"></script>
 
 
+
         </Head>
       <body>
         <Main />

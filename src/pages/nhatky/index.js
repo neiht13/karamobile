@@ -23,6 +23,7 @@ import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import { useRouter } from "next/router";
+import * as dayjs from 'dayjs'
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -34,7 +35,7 @@ export default function Home() {
     const [update, setUpdate] = useState(false)
     console.log(auth.currentUser)
     const router = useRouter();
-
+    const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
     useEffect (()=>{

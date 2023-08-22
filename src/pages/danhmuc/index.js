@@ -1,13 +1,13 @@
 import {
-  Page,
-  Navbar,
-  Block,
-  Button,
-  List,
-  ListItem,
-  Link,
-  BlockTitle,
-    Popover
+    Page,
+    Navbar,
+    Block,
+    Button,
+    List,
+    ListItem,
+    Link,
+    BlockTitle,
+    Popover, SegmentedButton, Segmented
 } from 'konsta/react';
 import { Link as LinkScroll } from "react-scroll";
 
@@ -17,13 +17,13 @@ import firebaseApp from "@/firebase/config";
 import {data} from "autoprefixer";
 import {log} from "next/dist/server/typescript/utils";
 import SeoHead from "@/component/SeoHead";
-import {signOut, useSession} from "next-auth/react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useSession} from "next-auth/react";
+import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
-import NongSan from "@/component/NongSan";
-import TimelinePage from "@/component/Timeline";
+import { useRouter } from "next/router";
+import * as dayjs from 'dayjs'
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -34,7 +34,8 @@ export default function Home() {
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
     console.log(auth.currentUser)
-
+    const router = useRouter();
+    const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
     useEffect (()=>{
@@ -104,6 +105,7 @@ const tb = (bai) => {
     const { isLoggedIn } = useAuth();
     const [popoverOpened, setPopoverOpened] = useState(false);
     const popoverTargetRef = useRef(null);
+    const [activeSegmented, setActiveSegmented] = useState(1);
 
     const openPopover = (targetRef) => {
         popoverTargetRef.current = targetRef;
@@ -135,14 +137,16 @@ const tb = (bai) => {
                   <ListItem
                       title="Sửa thông tin cá nhân"
                       link
-                      onClick={() => setPopoverOpened(false)}
+                      onClick={() => {
+                          router.push('/account')
+                          setPopoverOpened(false)}}
                   />
                   <ListItem
                       title="Đăng xuất"
                       link
-                      href={"/login"}
                       onClick={() => {
-                          signOut(auth);
+                          signOut(auth).then(e=> router.push('login'))
+                              .catch(e=>log(e));
                           setPopoverOpened(false)}}
 
                   />
@@ -167,7 +171,27 @@ const tb = (bai) => {
 
         {/*  </Block>*/}
 
-          <NongSan/>
+          {/*<NhatKy/>*/}
+          <BlockTitle></BlockTitle>
+
+          <Segmented strong rounded>
+              <SegmentedButton
+                  strong
+                  rounded
+                  active={activeSegmented === 1}
+                  onClick={() => setActiveSegmented(1)}
+              >
+                  Thuốc BVTV
+              </SegmentedButton>
+              <SegmentedButton
+                  strong
+
+                  active={activeSegmented === 2}
+                  onClick={() => setActiveSegmented(2)}
+              >
+                  Phân bón
+              </SegmentedButton>
+          </Segmented>
           <Block strong className="flex space-x-4">
               <Button onClick={res}>Lưu</Button>
           </Block>

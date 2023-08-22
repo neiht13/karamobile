@@ -30,9 +30,13 @@ useEffect(()=>{
 
   return(
       <AuthProvider>
-    <App theme={ios ? "ios": "material"}>
+    <App safeAreas theme={ios ? "ios": "material"}>
       <Head>
-        <title>My new cool app</title>
+        <title>Khoai Lang Châu Thành</title>
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+        />
       </Head>
       <Component {...pageProps} />
       <Nav/>
