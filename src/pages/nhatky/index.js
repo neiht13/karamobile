@@ -17,11 +17,12 @@ import firebaseApp from "@/firebase/config";
 import {data} from "autoprefixer";
 import {log} from "next/dist/server/typescript/utils";
 import SeoHead from "@/component/SeoHead";
-import {signOut, useSession} from "next-auth/react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useSession} from "next-auth/react";
+import { getAuth, createUserWithEmailAndPassword, signOut } from "firebase/auth";
 import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
+import { useRouter } from "next/router";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -32,6 +33,7 @@ export default function Home() {
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
     console.log(auth.currentUser)
+    const router = useRouter();
 
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
@@ -112,7 +114,7 @@ const tb = (bai) => {
       <Page>
           <Navbar title="Khoai Lang Châu Thành" right={
               !auth.currentUser ?
-              <a href={'/login'}>Login</a> :
+              <a href={'/login'}>Đăng nhập</a> :
               <Link
               className="popover-navbar-link"
               navbar
@@ -133,14 +135,16 @@ const tb = (bai) => {
                   <ListItem
                       title="Sửa thông tin cá nhân"
                       link
-                      onClick={() => setPopoverOpened(false)}
+                      onClick={() => {
+                          router.push('/account')
+                          setPopoverOpened(false)}}
                   />
                   <ListItem
                       title="Đăng xuất"
                       link
-                      href={"/login"}
                       onClick={() => {
-                          signOut(auth);
+                          signOut(auth).then(e=> router.push('login'))
+                              .catch(e=>log(e));
                           setPopoverOpened(false)}}
 
                   />

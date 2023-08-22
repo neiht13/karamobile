@@ -5,12 +5,16 @@ import { AuthProvider } from '@/firebase/authContext';
 import React, {useEffect, useState} from "react";
 import {Link as LinkScroll} from "react-scroll";
 import Nav from "@/component/Nav";
+import {getAuth} from "firebase/auth";
+import firebaseApp from "@/firebase/config";
+import {useRouter} from "next/router";
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 useEffect(()=>{
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
   const isAndroid = /Android/.test(navigator.userAgent);
+  const auth = getAuth(firebaseApp);
 
   if (isIOS) {
     console.log('Đây là iOS');

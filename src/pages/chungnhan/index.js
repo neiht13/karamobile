@@ -109,11 +109,10 @@ const tb = (bai) => {
     };
   return (
       <>
-          <SeoHead title={'mKara'}/>
       <Page>
           <Navbar title="Khoai Lang Châu Thành" right={
               !auth.currentUser ?
-              <a href={'/login'}>Login</a> :
+              <a href={'/login'}>Đăng nhập</a> :
               <Link
               className="popover-navbar-link"
               navbar

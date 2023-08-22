@@ -23,6 +23,7 @@ import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import MobileChangelogEntry from "@/component/Timeline";
+import {useRouter} from "next/router";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -33,6 +34,7 @@ export default function Home() {
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
     console.log(auth.currentUser)
+    const router = useRouter()
 
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
@@ -43,6 +45,11 @@ export default function Home() {
                 console.log(data)
                 }
             )
+    },[])
+    useEffect(()=>{
+        if (auth && !auth.currentUser) {
+            router.push('/login')
+        }
     },[])
     // listBai.forEach((b,i)=>{
     //     let sum = 0;
@@ -110,11 +117,10 @@ const tb = (bai) => {
     };
   return (
       <>
-          <SeoHead title={'mKara'}/>
       <Page>
           <Navbar title="Khoai Lang Châu Thành" right={
               !auth.currentUser ?
-              <a href={'/login'}>Login</a> :
+              <a href={'/login'}>Đăng nhập</a> :
               <Link
               className="popover-navbar-link"
               navbar
@@ -169,30 +175,8 @@ const tb = (bai) => {
         {/*  </Block>*/}
 
           {/*<NhatKy/>*/}
-          {/*<Block strong className="flex space-x-4">*/}
-          {/*    <Button onClick={res}>Lưu</Button>*/}
-          {/*</Block>*/}
-          {/*<ul className="mx-5 max-w-2xl md:mx-auto md:translate-x-28">*/}
-          {/*    {[*/}
-          {/*        {*/}
-          {/*            slug: 'est',*/}
-          {/*            type: 'changelog',*/}
-          {/*            publishedAt: '2023-08-21',*/}
-          {/*            title: 'Thien'*/}
-          {/*        },*/}
-          {/*        {*/}
-          {/*            slug: 'et',*/}
-          {/*            type: 'changelog',*/}
-          {/*            publishedAt: '2023-08-21',*/}
-          {/*            title: 'Thien'*/}
-          {/*        },*/}
-          {/*    ]*/}
-          {/*        .map((post) => (*/}
-          {/*            <li key={post.slug}>*/}
-          {/*                    <MobileChangelogEntry post={post} />*/}
-          {/*            </li>*/}
-          {/*        ))}*/}
-          {/*</ul>*/}
+
+
           <Block strong className="flex space-x-4">
           </Block>
       </Page>

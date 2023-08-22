@@ -21,7 +21,7 @@ module.exports = {
       'purple': '#3f3cbb',
       'midnight': '#121063',
       'metal': '#565584',
-      'tahiti': '#3ab7bf',
+      'blue': '#0066ff',
       'silver': '#ecebff',
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
@@ -39,8 +39,31 @@ module.exports = konstaConfig({
   ],
   darkMode: 'media', // or 'class'
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+            'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      colors: {
+        tomato: '#FF6347',
+        transparent: 'transparent',
+        current: 'currentColor',
+        'white': '#ffffff',
+        'purple': '#3f3cbb',
+        'midnight': '#121063',
+        'metal': '#565584',
+        'blue': '#0066ff',
+        'silver': '#ecebff',
+        'bubble-gum': '#ff77e9',
+        'bermuda': '#78dcca',
+      },
+    },  },
+
+  konsta: {
+
   },
+
   variants: {
     extend: {},
   },

@@ -104,8 +104,10 @@ export default function AccountPage() {
                 <ListInput
                     outline
                     label="Tài khoản"
-                    type="email"
+                    type="text"
                     disabled
+
+                    value={auth.currentUser?.email}
                     placeholder=""
                     onChange={e=>setEmail(e.target.value)}
                     media={<i className="fa-solid fa-at fa-spin"></i>}
@@ -122,7 +124,7 @@ export default function AccountPage() {
                     outline
                     label="Số điện thoai"
                     type="number"
-                    placeholder="Your e-mail"
+                    placeholder="Nhập số điện thoại"
                     onChange={e=>setEmail(e.target.value)}
                     media={<i className="fa-solid fa-at fa-spin"></i>}
                 />
@@ -148,7 +150,7 @@ export default function AccountPage() {
                     outline
                     label="Địa chỉ"
                     type="textarea"
-                    placeholder="Nhaapj "
+                    placeholder="Nhập địa chỉ chi tiết"
                     onChange={e=>setEmail(e.target.value)}
                     media={<i className="fa-solid fa-at fa-spin"></i>}
                 />
