@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
-  "name": "mKara",
-  "short_name": "mKara",
+  "name": "KLCT",
+  "short_name": "KLCT",
   "start_url": "/",
   "display": "fullscreen",
   "background_color": "#FFFFFF",

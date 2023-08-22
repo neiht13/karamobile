@@ -4,8 +4,8 @@ import { useRouter } from "next/router";
 
 // Default value for some meta data
 const defaultMeta = {
-  title: 'mKara',
-  siteName: 'mKara',
+  title: 'KLCT',
+  siteName: 'KLCT',
   description:
     '',
   // change base url of your web (without '/' at the end)

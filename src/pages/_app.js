@@ -8,6 +8,7 @@ import Nav from "@/component/Nav";
 import {getAuth} from "firebase/auth";
 import firebaseApp from "@/firebase/config";
 import {useRouter} from "next/router";
+import Head from "next/head";
 
 export default function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 useEffect(()=>{
@@ -30,6 +31,9 @@ useEffect(()=>{
   return(
       <AuthProvider>
     <App theme={ios ? "ios": "material"}>
+      <Head>
+        <title>My new cool app</title>
+      </Head>
       <Component {...pageProps} />
       <Nav/>
     </App>
