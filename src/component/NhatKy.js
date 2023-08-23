@@ -59,7 +59,7 @@ const NhatKy =()=>{
                 {/*    label="Tên công việc"*/}
                 {/*    type="text"*/}
                 {/*    placeholder="Nhập tên công việc"*/}
-                {/*    media={<i className="fa-solid fa-file-signature"></i>}*/}
+                {/*    media={<i class="fa-solid fa-file-signature"></i>}*/}
                 {/*    value={nameCV}*/}
                 {/*    onChange={e=>setNameCV(e.target.value)}*/}
                 {/*/>*/}
@@ -70,7 +70,7 @@ const NhatKy =()=>{
                     dropdown
                     defaultValue="chung"
                     placeholder="Chọn loại công việc ..."
-                    media={<i className="fa-solid fa-object-ungroup"></i>}
+                    media={<i class="fa-solid fa-object-ungroup"></i>}
 
                     value={typeCV}
                     onChange={e=> setTypeCV(e.target.value)}
@@ -93,7 +93,7 @@ const NhatKy =()=>{
                     label="Mô tả công việc"
                     type="textarea"
                     placeholder="Chi tiết công việc"
-                    media={<i className="fa-solid fa-pen-to-square"></i>}
+                    media={<i class="fa-solid fa-pen-to-square"></i>}
                     inputClassName="h-20 resize-none"
 
                     value={detailCV}
@@ -106,7 +106,7 @@ const NhatKy =()=>{
                     type="date"
                     defaultValue={now}
                     placeholder="Please choose..."
-                    media={<i className="fa-regular fa-calendar-check"></i>}
+                    media={<i class="fa-regular fa-calendar-check"></i>}
 
                     value={dateCV}
                     onChange={e=>dateCV(e.target.value)}
@@ -118,7 +118,7 @@ const NhatKy =()=>{
                 {/*    dropdown*/}
                 {/*    defaultValue="2023"*/}
                 {/*    placeholder="Chọn mùa vụ ..."*/}
-                {/*    media={<i className="fa-solid fa-bottle-water"></i>}*/}
+                {/*    media={<i class="fa-solid fa-bottle-water"></i>}*/}
 
                 {/*    value={vattu}*/}
                 {/*    onChange={e=>setVattu(e.target.value)}*/}
@@ -135,7 +135,7 @@ const NhatKy =()=>{
                     dropdown
                     defaultValue="2023"
                     placeholder="Chọn mùa vụ ..."
-                    media={<i className="fa-brands fa-pagelines"></i>}
+                    media={<i class="fa-brands fa-pagelines"></i>}
 
                     value={muavu}
                     onChange={e=>setMuavu(e.target.value)}
@@ -151,7 +151,7 @@ const NhatKy =()=>{
                     label="Hình ảnh"
                     type="file"
                     placeholder="Chọn hình ảnh"
-                    media={<i className="fa-solid fa-image"></i>}
+                    media={<i class="fa-solid fa-image"></i>}
 
                     value={imageCV}
                     onChange={e=>setImageCV(e.target.value)}

@@ -25,7 +25,7 @@ const ChungNhan =()=>{
                     label="Tên cơ sở sản xuất"
                     type="text"
                     placeholder="Nhập tên cơ sở sản xuất"
-                    media={<i className="fa-solid fa-house-flag"></i>}
+                    media={<i class="fa-solid fa-house-flag"></i>}
                 />
 
                 <ListInput
@@ -33,7 +33,7 @@ const ChungNhan =()=>{
                     label="Địa chỉ"
                     type="text"
                     placeholder="Nhập địa chỉ cụ thể"
-                    media={<i className="fa-solid fa-location-dot"></i>}
+                    media={<i class="fa-solid fa-location-dot"></i>}
                 />
                 <ListInput
                     outline
@@ -48,7 +48,7 @@ const ChungNhan =()=>{
                     label="Tên chứng nhận"
                     type="text"
                     placeholder="Nhập tên chứng nhận"
-                    media={<i className="fa-solid fa-stamp"></i>}
+                    media={<i class="fa-solid fa-stamp"></i>}
                 />
 
                 <ListInput
@@ -58,7 +58,7 @@ const ChungNhan =()=>{
                     dropdown
                     defaultValue=""
                     placeholder="Chọn loại chứng nhận ..."
-                    media={<i className="fa-solid fa-certificate"></i>}
+                    media={<i class="fa-solid fa-certificate"></i>}
                 >
                     <option value=''>&nbsp;--Chọn loại chứng nhận--</option>
                     <option value='VietGAP'>&nbsp;VietGAP</option>

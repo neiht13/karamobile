@@ -105,7 +105,7 @@ export default function FormInputsPage() {
                     type="text"
                     placeholder="Nhập tài khoản"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
 
                 <ListInput
@@ -114,7 +114,7 @@ export default function FormInputsPage() {
                     type="password"
                     placeholder="Nhập mật khẩu"
                     onChange={e=>setPassword(e.target.value)}
-                    media={<i className="fa-solid fa-key fa-flip"></i>}
+                    media={<i class="fa-solid fa-key fa-flip"></i>}
                 />
 
                 {/*<ListInput*/}

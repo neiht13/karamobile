@@ -30,7 +30,7 @@ const NongSan =()=>{
                     label="Tên nông sản"
                     type="text"
                     placeholder="Nhập tên nông sản"
-                    media={<i className="fa-solid fa-seedling"></i>}
+                    media={<i class="fa-solid fa-seedling"></i>}
                     value={nameNS}
                     onChange={e => setNameNS(e.target.value)}
                 />
@@ -40,7 +40,7 @@ const NongSan =()=>{
                     label="Cơ sở sản xuất"
                     type="text"
                     placeholder="Nhập tên cơ sở sản xuất"
-                    media={<i className="fa-solid fa-house-flag"></i>}
+                    media={<i class="fa-solid fa-house-flag"></i>}
                     value={cssx}
                     onChange={e => setCssx(e.target.value)}
                 />
@@ -58,7 +58,7 @@ const NongSan =()=>{
                     label="Thời hạn sử dụng"
                     type="text"
                     placeholder="Nhập tên nông sản"
-                    media={<i className="fa-solid fa-calendar-xmark"></i>}
+                    media={<i class="fa-solid fa-calendar-xmark"></i>}
                     value={hsd}
                     onChange={e => setHsd(e.target.value)}
                 />
@@ -70,7 +70,7 @@ const NongSan =()=>{
                     label="Hình ảnh"
                     type="file"
                     placeholder="Chọn hình ảnh"
-                    media={<i className="fa-solid fa-image"></i>}
+                    media={<i class="fa-solid fa-image"></i>}
                     value={imageNS}
                     onChange={e => setImageNS(e.target.value)}
                 />

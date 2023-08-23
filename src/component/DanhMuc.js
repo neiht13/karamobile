@@ -20,28 +20,28 @@ const DanhMuc =({tab})=>{
                     label="Tên thuốc"
                     type="text"
                     placeholder="Nhập tên thuốc"
-                    media={<i className="fa-solid fa-certificate"></i>}
+                    media={<i class="fa-solid fa-certificate"></i>}
                 />
                 <ListInput
                     outline
                     label="Hoạt chất"
                     type="text"
                     placeholder="Nhập tên hoạt chất"
-                    media={<i className="fa-solid fa-certificate"></i>}
+                    media={<i class="fa-solid fa-certificate"></i>}
                 />
                 <ListInput
                     outline
                     label="Liều dùng"
                     type="text"
                     placeholder="Nhập liều dùng"
-                    media={<i className="fa-solid fa-certificate"></i>}
+                    media={<i class="fa-solid fa-certificate"></i>}
                 />
                 <ListInput
                     outline
                     label="Cách dùng"
                     type="text"
                     placeholder="Nhập cách dùng"
-                    media={<i className="fa-solid fa-certificate"></i>}
+                    media={<i class="fa-solid fa-certificate"></i>}
                 />
             </List>
 
@@ -60,28 +60,28 @@ const DanhMuc =({tab})=>{
                         label="Tên phân bón"
                         type="text"
                         placeholder="Nhập tên phân bón"
-                        media={<i className="fa-solid fa-certificate"></i>}
+                        media={<i class="fa-solid fa-certificate"></i>}
                     />
                     <ListInput
                         outline
                         label="Hãng sản xuất"
                         type="text"
                         placeholder="Nhập tên hãng sản xuất"
-                        media={<i className="fa-solid fa-certificate"></i>}
+                        media={<i class="fa-solid fa-certificate"></i>}
                     />
                     <ListInput
                         outline
                         label="Khối lượng"
                         type="text"
                         placeholder="Nhập khối lượng"
-                        media={<i className="fa-solid fa-certificate"></i>}
+                        media={<i class="fa-solid fa-certificate"></i>}
                     />
                     <ListInput
                         outline
                         label="Cách sử dụng"
                         type="text"
                         placeholder="Nhập cách sử dụng"
-                        media={<i className="fa-solid fa-certificate"></i>}
+                        media={<i class="fa-solid fa-certificate"></i>}
                     />
                 </List>
 

@@ -110,7 +110,7 @@ export default function AccountPage() {
                     value={auth.currentUser?.email}
                     placeholder=""
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
                 <ListInput
                     outline
@@ -118,7 +118,7 @@ export default function AccountPage() {
                     type="text"
                     placeholder="Nhập Họ và tên"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-file-signature fa-spin"></i>}
+                    media={<i class="fa-solid fa-file-signature fa-spin"></i>}
                 />
                 <ListInput
                     outline
@@ -126,7 +126,7 @@ export default function AccountPage() {
                     type="number"
                     placeholder="Nhập số điện thoại"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
                 <ListInput
                     outline
@@ -135,7 +135,7 @@ export default function AccountPage() {
                     disabled
                     placeholder="Người dùng"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
                 <ListInput
                     outline
@@ -144,7 +144,7 @@ export default function AccountPage() {
                     disabled
                     placeholder="Hoạt động"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
                 <ListInput
                     outline
@@ -152,7 +152,7 @@ export default function AccountPage() {
                     type="textarea"
                     placeholder="Nhập địa chỉ chi tiết"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i class="fa-solid fa-at fa-spin"></i>}
                 />
                       <MyAwesomeMap zoom={16}
                                     center={{lat: '10.4552072',lng:'105.629261'}}

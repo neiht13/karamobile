@@ -123,7 +123,7 @@ const tb = (bai) => {
               navbar
               onClick={() => openPopover('.popover-navbar-link')}
           >
-              <i className="fa-solid fa-user-large"></i>
+              <i class="fa-solid fa-user-large"></i>
           </Link>
 
           }>
