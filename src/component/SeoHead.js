@@ -9,12 +9,11 @@ const defaultMeta = {
   description:
     '',
   // change base url of your web (without '/' at the end)
-  url: 'https://mkara.vercel.app',
+  url: 'https://khoailangchauthanhdt.vn',
   type: 'website',
+  display: 'fullscreen',
   robots: 'follow, index',
-  // change with url of your image (recommended dimension = 1.91:1)
-  // used in twitter, facebook, etc. card when link copied in tweet/status 
-  image: 'https://mkara.app/khoailang.png',
+  image: 'https://khoailangchauthanhdt.vn/khoailang.png',
   author: 'Lorem Ipsum'
 };
 
@@ -55,33 +54,6 @@ const SeoHead = (props) => {
       <meta content={meta.description} name='description' />
       <meta property='og:url' content={`${meta.url}${router.asPath}`} />
       <link rel='canonical' href={`${meta.url}${router.asPath}`} />
-      {/* Open Graph */}
-      <meta property='og:type' content={meta.type} />
-      <meta property='og:site_name' content={meta.siteName} />
-      <meta property='og:description' content={meta.description} />
-      <meta property='og:title' content={meta.title} />
-      <meta name='image' property='og:image' content={meta.image} />
-      {/* Twitter */}
-      <meta name='twitter:card' content='summary_large_image' />
-      <meta name='twitter:site' content='@F2aldi' />
-      <meta name='twitter:title' content={meta.title} />
-      <meta name='twitter:description' content={meta.description} />
-      <meta name='twitter:image' content={meta.image} />
-      {meta.date && (
-        <>
-          <meta property='article:published_time' content={meta.date} />
-          <meta
-            name='publish_date'
-            property='og:publish_date'
-            content={meta.date}
-          />
-          <meta
-            name='author'
-            property='article:author'
-            content={meta.author}
-          />
-        </>
-      )}
       {/* Favicons */}
       {favicons.map((linkProps) => (
         <link key={linkProps.href} {...linkProps} />
@@ -94,6 +66,10 @@ const SeoHead = (props) => {
       />
       {/* Accent color on supported browser */}
       <meta name='theme-color' content='#F53838' />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
+        />
     </Head>
   );
 };
