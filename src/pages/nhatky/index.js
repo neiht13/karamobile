@@ -25,6 +25,7 @@ import NhatKy from "@/component/NhatKy";
 import { useRouter } from "next/router";
 import * as dayjs from 'dayjs'
 import NavHeader from "@/component/Navbar";
+import Nav from "@/component/Nav";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -108,6 +109,8 @@ const tb = (bai) => {
       <Page>
           <NavHeader/>
           <NhatKy/>
+          <Nav/>
+
       </Page>
       </>
   );

@@ -41,7 +41,6 @@ useEffect(()=>{
       {/*</Head>*/}
       <SeoHead/>
       <Component {...pageProps} />
-      <Nav/>
     </App>
       </AuthProvider>)
 }

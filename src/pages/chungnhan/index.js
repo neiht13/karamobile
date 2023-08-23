@@ -23,6 +23,7 @@ import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
 import ChungNhan from "@/component/ChungNhan";
 import NavHeader from "@/component/Navbar";
+import Nav from "@/component/Nav";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -71,6 +72,7 @@ export default function ChungNha() {
       <Page>
           <NavHeader/>
           <ChungNhan/>
+          <Nav/>
       </Page>
       </>
   );

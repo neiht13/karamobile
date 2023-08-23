@@ -25,6 +25,7 @@ import NhatKy from "@/component/NhatKy";
 import MobileChangelogEntry from "@/component/Timeline";
 import {useRouter} from "next/router";
 import TimelinePage from "@/component/Timeline";
+import Nav from "@/component/Nav";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -182,6 +183,7 @@ const tb = (bai) => {
           <Block strong className="flex space-x-4">
           </Block>
       </Page>
+          <Nav/>
       </>
   );
 }

@@ -24,6 +24,8 @@ import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import NongSan from "@/component/NongSan";
 import TimelinePage from "@/component/Timeline";
+import Nav from "@/component/Nav";
+import NavHeader from "@/component/Navbar";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -112,42 +114,8 @@ const tb = (bai) => {
   return (
       <>
       <Page>
-          <Navbar title="Khoai Lang Châu Thành" right={
-              !auth.currentUser ?
-              <a href={'/login'}>Đăng nhập</a> :
-              <Link
-              className="popover-navbar-link"
-              navbar
-              onClick={() => openPopover('.popover-navbar-link')}
-          >
-              <i class="fa-solid fa-user-large"></i>
-          </Link>
+          <NavHeader/>
 
-          }>
-
-          </Navbar>
-          <Popover
-              opened={popoverOpened}
-              target={popoverTargetRef.current}
-              onBackdropClick={() => setPopoverOpened(false)}
-          >
-              <List nested>
-                  <ListItem
-                      title="Sửa thông tin cá nhân"
-                      link
-                      onClick={() => setPopoverOpened(false)}
-                  />
-                  <ListItem
-                      title="Đăng xuất"
-                      link
-                      href={"/login"}
-                      onClick={() => {
-                          signOut(auth);
-                          setPopoverOpened(false)}}
-
-                  />
-              </List>
-          </Popover>
 
         {/*<Block strong>*/}
         {/*  <p className="text-center font-bold p-1">*/}
@@ -168,6 +136,8 @@ const tb = (bai) => {
         {/*  </Block>*/}
 
           <NongSan/>
+          <Nav/>
+
       </Page>
       </>
   );
