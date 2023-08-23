@@ -105,7 +105,7 @@ export default function FormInputsPage() {
                     type="text"
                     placeholder="Nhập tài khoản"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i class="fa-solid fa-at fa-spin"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-at fa-spin"></i>}
                 />
 
                 <ListInput
@@ -114,7 +114,7 @@ export default function FormInputsPage() {
                     type="password"
                     placeholder="Nhập mật khẩu"
                     onChange={e=>setPassword(e.target.value)}
-                    media={<i class="fa-solid fa-key fa-flip"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-key fa-flip"></i>}
                 />
 
                 {/*<ListInput*/}
@@ -122,7 +122,7 @@ export default function FormInputsPage() {
                 {/*    label="Textarea"*/}
                 {/*    type="textarea"*/}
                 {/*    placeholder="Bio"*/}
-                {/*    media={<i class="fa-brands fa-twitter" />}*/}
+                {/*    media={<i className="w-5 h-5 fa-brands fa-twitter" />}*/}
                 {/*    inputClassName="!h-20 resize-none"*/}
                 {/*/>*/}
             </List>

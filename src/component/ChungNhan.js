@@ -25,7 +25,7 @@ const ChungNhan =()=>{
                     label="Tên cơ sở sản xuất"
                     type="text"
                     placeholder="Nhập tên cơ sở sản xuất"
-                    media={<i class="fa-solid fa-house-flag"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-house-flag"></i>}
                 />
 
                 <ListInput
@@ -33,14 +33,14 @@ const ChungNhan =()=>{
                     label="Địa chỉ"
                     type="text"
                     placeholder="Nhập địa chỉ cụ thể"
-                    media={<i class="fa-solid fa-location-dot"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-location-dot"></i>}
                 />
                 <ListInput
                     outline
                     label="Diện tích"
                     type="text"
                     placeholder="Nhập diện tích canh tác"
-                    media={<i class="fa-regular fa-square-plus"></i>}
+                    media={<i className="w-5 h-5 fa-regular fa-square-plus"></i>}
                 />
 
                 <ListInput
@@ -48,7 +48,7 @@ const ChungNhan =()=>{
                     label="Tên chứng nhận"
                     type="text"
                     placeholder="Nhập tên chứng nhận"
-                    media={<i class="fa-solid fa-stamp"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-stamp"></i>}
                 />
 
                 <ListInput
@@ -58,7 +58,7 @@ const ChungNhan =()=>{
                     dropdown
                     defaultValue=""
                     placeholder="Chọn loại chứng nhận ..."
-                    media={<i class="fa-solid fa-certificate"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-certificate"></i>}
                 >
                     <option value=''>&nbsp;--Chọn loại chứng nhận--</option>
                     <option value='VietGAP'>&nbsp;VietGAP</option>
@@ -71,7 +71,7 @@ const ChungNhan =()=>{
                     label="Ngày hiệu lực"
                     type="date"
                     placeholder="Please choose..."
-                    media={<i class="fa-solid fa-calendar"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-calendar"></i>}
                 />
 
                 <ListInput
@@ -80,7 +80,7 @@ const ChungNhan =()=>{
                     label="Hình ảnh"
                     type="file"
                     placeholder="Chọn hình ảnh"
-                    media={<i class="fa-solid fa-image"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-image"></i>}
                 />
 
             </List>

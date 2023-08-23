@@ -39,7 +39,7 @@ const Nav = (props) => {
       //                   : " border-transparent")
       //           }
       //       >
-      //           <i class="fa-solid fa-home text-primary fa-xl"></i>
+      //           <i className="w-5 h-5 fa-solid fa-home text-primary fa-xl"></i>
       //         Trang chủ
       //       </a><a
       //           href={'nhatky'}
@@ -50,7 +50,7 @@ const Nav = (props) => {
       //                   : " border-transparent")
       //           }
       //       >
-      //           <i class="fa-solid fa-list-check text-primary fa-xl"></i>
+      //           <i className="w-5 h-5 fa-solid fa-list-check text-primary fa-xl"></i>
       //         Nhật ký
       //       </a>
       //         <a
@@ -62,7 +62,7 @@ const Nav = (props) => {
       //                   : " border-transparent")
       //           }
       //       >
-      //           <i class="fa-solid fa-lemon text-primary fa-xl"></i>
+      //           <i className="w-5 h-5 fa-solid fa-lemon text-primary fa-xl"></i>
       //         Nông sản
       //       </a>
       //         <a
@@ -74,7 +74,7 @@ const Nav = (props) => {
       //                   : " border-transparent")
       //           }
       //       >
-      //           <i class="fa-solid fa-stamp text-primary fa-xl"></i>
+      //           <i className="w-5 h-5 fa-solid fa-stamp text-primary fa-xl"></i>
       //         Chứng nhận
       //       </a>
       //     </ul>
@@ -90,28 +90,28 @@ const Nav = (props) => {
               active={router.pathname === '/'}
               onClick={() => {router.push('/')}}
               icon={
-                  <i class="fa-solid fa-home"></i>
+                  <i className="w-5 h-5 fa-solid fa-home"></i>
               }
               label={'Trang chủ'}
           /><TabbarLink
           active={router.pathname === '/nhatky'}
               onClick={() => {router.push('/nhatky')}}
               icon={
-                  <i class="fa-solid fa-calendar-days"></i>
+                  <i className="w-5 h-5 fa-solid fa-calendar-days"></i>
               }
               label={'Nhật ký'}
           /><TabbarLink
           active={router.pathname === '/nongsan'}
               onClick={() => {router.push('/nongsan')}}
               icon={
-                  <i class="fa-solid fa-lemon"></i>
+                  <i className="w-5 h-5 fa-solid fa-lemon"></i>
               }
               label={'Nông sản'}
           /><TabbarLink
           active={router.pathname === '/chungnhan'}
               onClick={() => {router.push('/chungnhan')}}
               icon={
-                  <i class="fa-solid fa-stamp"></i>
+                  <i className="w-5 h-5 fa-solid fa-stamp"></i>
               }
               label={'Chứng nhận'}
           />
@@ -119,7 +119,7 @@ const Nav = (props) => {
           {/*active={router.pathname === '/danhmuc'}*/}
           {/*    onClick={() => {router.push('/danhmuc')}}*/}
           {/*    icon={*/}
-          {/*        <i class="fa-solid fa-list"></i>*/}
+          {/*        <i className="w-5 h-5 fa-solid fa-list"></i>*/}
           {/*    }*/}
           {/*    label={'Danh mục'}*/}
           {/*/>*/}

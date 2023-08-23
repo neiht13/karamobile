@@ -26,7 +26,7 @@ const NavHeader = () => {
                   navbar
                   onClick={() => openPopover('.popover-navbar-link')}
               >
-                  <i class="fa-solid fa-user-large"></i>
+                  <i className="w-5 h-5 fa-solid fa-user-large"></i>
               </Link>
 
       }>

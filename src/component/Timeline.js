@@ -12,7 +12,7 @@ const TimelinePage = () => {
                 <List strongIos outlineIos>
                     <ListItem
                         link
-                        chevronIcon={<i class="fa-solid fa-calendar"/>}
+                        chevronIcon={<i className="w-5 h-5 fa-solid fa-calendar"/>}
                         title="Bón phân"
                         after={''}
                         subtitle={now}
@@ -28,7 +28,7 @@ const TimelinePage = () => {
                     />
                     <ListItem
                         link
-                        chevronIcon={<i class="fa-solid fa-calendar"/>}
+                        chevronIcon={<i className="w-5 h-5 fa-solid fa-calendar"/>}
 
                         title="Tỉa cành"
                         // after="$22"
@@ -46,7 +46,7 @@ const TimelinePage = () => {
                     <ListItem
                         link
                         title="Sử dụng thuốc BVTV"
-                        chevronIcon={<i class="fa-solid fa-calendar"/>}
+                        chevronIcon={<i className="w-5 h-5 fa-solid fa-calendar"/>}
                         subtitle={now}
                         text="Sử dụng thuốc BVTV với liều lượng 1 chai cho 1 bình"
                         media={

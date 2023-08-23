@@ -30,7 +30,7 @@ const NongSan =()=>{
                     label="Tên nông sản"
                     type="text"
                     placeholder="Nhập tên nông sản"
-                    media={<i class="fa-solid fa-seedling"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-seedling"></i>}
                     value={nameNS}
                     onChange={e => setNameNS(e.target.value)}
                 />
@@ -40,7 +40,7 @@ const NongSan =()=>{
                     label="Cơ sở sản xuất"
                     type="text"
                     placeholder="Nhập tên cơ sở sản xuất"
-                    media={<i class="fa-solid fa-house-flag"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-house-flag"></i>}
                     value={cssx}
                     onChange={e => setCssx(e.target.value)}
                 />
@@ -49,7 +49,7 @@ const NongSan =()=>{
                     label="Quy cách đóng gói"
                     type="text"
                     placeholder="Nhập tên nông sản"
-                    media={<i class="fa-solid fa-box"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-box"></i>}
                     value={donggoi}
                     onChange={e => setDonggoi(e.target.value)}
                 />
@@ -58,7 +58,7 @@ const NongSan =()=>{
                     label="Thời hạn sử dụng"
                     type="text"
                     placeholder="Nhập tên nông sản"
-                    media={<i class="fa-solid fa-calendar-xmark"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-calendar-xmark"></i>}
                     value={hsd}
                     onChange={e => setHsd(e.target.value)}
                 />
@@ -70,7 +70,7 @@ const NongSan =()=>{
                     label="Hình ảnh"
                     type="file"
                     placeholder="Chọn hình ảnh"
-                    media={<i class="fa-solid fa-image"></i>}
+                    media={<i className="w-5 h-5 fa-solid fa-image"></i>}
                     value={imageNS}
                     onChange={e => setImageNS(e.target.value)}
                 />
