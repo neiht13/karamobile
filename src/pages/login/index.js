@@ -37,8 +37,8 @@ export default function FormInputsPage() {
         setDemoValue('');
     };
 
-    const [email, setEmail] = useState("thienphan9612@gmail.com " )
-    const [password, setPassword] = useState("hj6scsg4")
+    const [email, setEmail] = useState("" )
+    const [password, setPassword] = useState("")
 
     const auth = getAuth(firebaseApp);
     const signUp = ()=>{
@@ -54,7 +54,7 @@ export default function FormInputsPage() {
             });
     }
     const signInn = ()=>{
-        signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(auth, email+ '@khoailangchauthanhdt.vn', password)
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
@@ -71,7 +71,7 @@ export default function FormInputsPage() {
     const router = useRouter()
 
      const handleLogin = () => {
-         signInWithEmailAndPassword(auth, email, password)
+         signInWithEmailAndPassword(auth, email+ '@khoailangchauthanhdt.vn', password)
              .then((userCredential) => {
                  // Signed in
                  login()
@@ -101,9 +101,9 @@ export default function FormInputsPage() {
 
                 <ListInput
                     outline
-                    label="E-mail"
-                    type="email"
-                    placeholder="Your e-mail"
+                    label="Tài khoản"
+                    type="text"
+                    placeholder="Nhập tài khoản"
                     onChange={e=>setEmail(e.target.value)}
                     media={<i className="fa-solid fa-at fa-spin"></i>}
                 />
@@ -112,7 +112,7 @@ export default function FormInputsPage() {
                     outline
                     label="Password"
                     type="password"
-                    placeholder="Your password"
+                    placeholder="Nhập mật khẩu"
                     onChange={e=>setPassword(e.target.value)}
                     media={<i className="fa-solid fa-key fa-flip"></i>}
                 />

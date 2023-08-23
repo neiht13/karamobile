@@ -20,7 +20,7 @@ const TimelinePage = () => {
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-                                src="/mango.png"
+                                src="/khoailang.png"
                                 width="80"
                                 alt="demo"
                             />
@@ -52,7 +52,7 @@ const TimelinePage = () => {
                         media={
                             <img
                                 className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
-                                src="/mango.png"
+                                src="/khoailang.png"
                                 width="80"
                                 alt="demo"
                             />

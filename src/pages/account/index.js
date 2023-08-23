@@ -118,7 +118,7 @@ export default function AccountPage() {
                     type="text"
                     placeholder="Nhập Họ và tên"
                     onChange={e=>setEmail(e.target.value)}
-                    media={<i className="fa-solid fa-at fa-spin"></i>}
+                    media={<i className="fa-solid fa-file-signature fa-spin"></i>}
                 />
                 <ListInput
                     outline

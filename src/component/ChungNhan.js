@@ -1,53 +1,66 @@
-import {BlockTitle, List, ListInput} from "konsta/react";
+import {Block, BlockTitle, Button, List, ListInput} from "konsta/react";
 import * as dayjs from 'dayjs'
-import {useState} from "react";
+import React, {useState} from "react";
+import {getAuth} from "firebase/auth";
+import firebaseApp from "@/firebase/config";
+
+const auth = getAuth(firebaseApp);
 
 const ChungNhan =()=>{
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     console.log(now)
+
+    const handleSave = () => {
+        alert(JSON.stringify({ user: auth.currentUser.email, dateUpdate: now,
+            nameNS, cssx, donggoi, hsd, imageNS
+        }))
+    }
     return (
         <>
             <BlockTitle>Chi tiết nông sản</BlockTitle>
             <List strongIos insetIos>
-                <ListInput
-                    outline
-                    label="Tên chứng nhận"
-                    type="text"
-                    placeholder="Nhập tên công việc"
-                    media={<i class="fa-solid fa-heart"></i>}
-                />
+
                 <ListInput
                     outline
                     label="Tên cơ sở sản xuất"
                     type="text"
-                    placeholder="Nhập tên công việc"
-                    media={<i class="fa-solid fa-heart"></i>}
+                    placeholder="Nhập tên cơ sở sản xuất"
+                    media={<i className="fa-solid fa-house-flag"></i>}
                 />
 
                 <ListInput
                     outline
                     label="Địa chỉ"
                     type="text"
-                    placeholder="Nhập tên công việc"
-                    media={<i class="fa-solid fa-heart"></i>}
+                    placeholder="Nhập địa chỉ cụ thể"
+                    media={<i className="fa-solid fa-location-dot"></i>}
                 />
                 <ListInput
                     outline
                     label="Diện tích"
                     type="text"
-                    placeholder="Nhập tên công việc"
-                    media={<i class="fa-solid fa-heart"></i>}
+                    placeholder="Nhập diện tích canh tác"
+                    media={<i class="fa-regular fa-square-plus"></i>}
                 />
+
+                <ListInput
+                    outline
+                    label="Tên chứng nhận"
+                    type="text"
+                    placeholder="Nhập tên chứng nhận"
+                    media={<i className="fa-solid fa-stamp"></i>}
+                />
+
                 <ListInput
                     outline
                     label="Loại chứng nhận"
                     type="select"
                     dropdown
                     defaultValue=""
-                    placeholder="Chọn loại công việc ..."
-                    media={<i class="fa-solid fa-heart"></i>}
+                    placeholder="Chọn loại chứng nhận ..."
+                    media={<i className="fa-solid fa-certificate"></i>}
                 >
-                    <option value=''>&nbsp;--Chọn loại chứng chỉ--</option>
+                    <option value=''>&nbsp;--Chọn loại chứng nhận--</option>
                     <option value='VietGAP'>&nbsp;VietGAP</option>
                     <option value='GlobalGAP'>&nbsp;GlobalGAP</option>
                     <option value='USDA Organic'>&nbsp;USDA Organic</option>
@@ -58,9 +71,8 @@ const ChungNhan =()=>{
                     label="Ngày hiệu lực"
                     type="date"
                     placeholder="Please choose..."
-                    media={<i class="fa-solid fa-heart"></i>}
+                    media={<i class="fa-solid fa-calendar"></i>}
                 />
-
 
                 <ListInput
                     outline
@@ -68,10 +80,16 @@ const ChungNhan =()=>{
                     label="Hình ảnh"
                     type="file"
                     placeholder="Chọn hình ảnh"
-                    media={<i class="fa-solid fa-heart"></i>}
+                    media={<i class="fa-solid fa-image"></i>}
                 />
 
             </List>
+
+            <Block strong className="flex space-x-4">
+                <Button onClick={handleSave}>Lưu</Button>
+            </Block>
+            <Block strong className="flex space-x-4">
+            </Block>
         </>
     )
 }

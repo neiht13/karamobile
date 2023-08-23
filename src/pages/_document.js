@@ -8,7 +8,7 @@ export default function Document() {
             <meta property='og:site_name' content={'KLCT'} />
             <meta property='og:description' content={'KLCT'} />
             <meta property='og:title' content={'KLCT'} />
-            <meta name='image' property='og:image' content={'/mango.png'} />
+            <meta name='image' property='og:image' content={'/khoailang.png'} />
             <meta
                 name="format-detection"
                 content="telephone=no, date=no, email=no, address=no"

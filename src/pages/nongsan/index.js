@@ -37,14 +37,14 @@ export default function Home() {
 
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
-    useEffect (()=>{
-        getDocs(collection(db, 'kara')).then(r=>{
-                const data = r.docs.map(doc => doc.data())
-                setListBai(data)
-                console.log(data)
-                }
-            )
-    },[])
+    // useEffect (()=>{
+    //     //getDocs(collection(db, 'kara')).then(r=>{
+    //             const data = r.docs.map(doc => doc.data())
+    //             setListBai(data)
+    //             console.log(data)
+    //             }
+    //         )
+    // },[])
     // listBai.forEach((b,i)=>{
     //     let sum = 0;
     //     let tt = 0;
@@ -168,11 +168,6 @@ const tb = (bai) => {
         {/*  </Block>*/}
 
           <NongSan/>
-          <Block strong className="flex space-x-4">
-              <Button onClick={res}>Lưu</Button>
-          </Block>
-          <Block strong className="flex space-x-4">
-          </Block>
       </Page>
       </>
   );

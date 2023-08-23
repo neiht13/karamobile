@@ -24,6 +24,7 @@ import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import { useRouter } from "next/router";
 import * as dayjs from 'dayjs'
+import DanhMuc from "@/component/DanhMuc";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -38,14 +39,14 @@ export default function Home() {
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
-    useEffect (()=>{
-        getDocs(collection(db, 'kara')).then(r=>{
-                const data = r.docs.map(doc => doc.data())
-                setListBai(data)
-                console.log(data)
-                }
-            )
-    },[])
+    // useEffect (()=>{
+        //getDocs(collection(db, 'kara')).then(r=>{
+    //             const data = r.docs.map(doc => doc.data())
+    //             setListBai(data)
+    //             console.log(data)
+    //             }
+    //         )
+    // },[])
     // listBai.forEach((b,i)=>{
     //     let sum = 0;
     //     let tt = 0;
@@ -192,11 +193,7 @@ const tb = (bai) => {
                   Phân bón
               </SegmentedButton>
           </Segmented>
-          <Block strong className="flex space-x-4">
-              <Button onClick={res}>Lưu</Button>
-          </Block>
-          <Block strong className="flex space-x-4">
-          </Block>
+          <DanhMuc tab={activeSegmented === 1 ? 'thuoc' : 'phanbon'}/>
       </Page>
       </>
   );

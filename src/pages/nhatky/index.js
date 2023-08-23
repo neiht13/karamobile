@@ -24,6 +24,7 @@ import dynamic from "next/dynamic";
 import NhatKy from "@/component/NhatKy";
 import { useRouter } from "next/router";
 import * as dayjs from 'dayjs'
+import NavHeader from "@/component/Navbar";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -34,18 +35,17 @@ export default function Home() {
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
     console.log(auth.currentUser)
-    const router = useRouter();
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
-    useEffect (()=>{
-        getDocs(collection(db, 'kara')).then(r=>{
-                const data = r.docs.map(doc => doc.data())
-                setListBai(data)
-                console.log(data)
-                }
-            )
-    },[])
+    // useEffect (()=>{
+    //     getDocs(collection(db, 'kara')).then(r=>{
+    //             const data = r.docs.map(doc => doc.data())
+    //             setListBai(data)
+    //             console.log(data)
+    //             }
+    //         )
+    // },[])
     // listBai.forEach((b,i)=>{
     //     let sum = 0;
     //     let tt = 0;
@@ -102,80 +102,12 @@ const tb = (bai) => {
 }
 
     // const { data: session, status } = useSession()
-    const { isLoggedIn } = useAuth();
-    const [popoverOpened, setPopoverOpened] = useState(false);
-    const popoverTargetRef = useRef(null);
 
-    const openPopover = (targetRef) => {
-        popoverTargetRef.current = targetRef;
-        setPopoverOpened(true);
-    };
   return (
       <>
       <Page>
-          <Navbar title="Khoai Lang Châu Thành" right={
-              !auth.currentUser ?
-              <a href={'/login'}>Đăng nhập</a> :
-              <Link
-              className="popover-navbar-link"
-              navbar
-              onClick={() => openPopover('.popover-navbar-link')}
-          >
-              <i className="fa-solid fa-user-large"></i>
-          </Link>
-
-          }>
-
-          </Navbar>
-          <Popover
-              opened={popoverOpened}
-              target={popoverTargetRef.current}
-              onBackdropClick={() => setPopoverOpened(false)}
-          >
-              <List nested>
-                  <ListItem
-                      title="Sửa thông tin cá nhân"
-                      link
-                      onClick={() => {
-                          router.push('/account')
-                          setPopoverOpened(false)}}
-                  />
-                  <ListItem
-                      title="Đăng xuất"
-                      link
-                      onClick={() => {
-                          signOut(auth).then(e=> router.push('login'))
-                              .catch(e=>log(e));
-                          setPopoverOpened(false)}}
-
-                  />
-              </List>
-          </Popover>
-
-        {/*<Block strong>*/}
-        {/*  <p className="text-center font-bold p-1">*/}
-        {/*    CUỘC THI HÁT KARAOKE MỪNG THÀNH LẬP NGÀNH*/}
-        {/*  </p>*/}
-        {/*</Block>*/}
-        {/*  <Block>*/}
-        {/*      <MyAwesomeMap zoom={16}*/}
-        {/*                    center={{lat: '10.4552072',lng:'105.629261'}}*/}
-        {/*                    markers={[*/}
-        {/*                        {lat: '10.4552072',lng:'105.629', address:'My Location'},*/}
-        {/*                        {lat: '10.4552',lng:'105.661', address:'My Location 2'},*/}
-        {/*                        {lat: '10.45072',lng:'105.6261', address:'My Location 3'},*/}
-        {/*                        {lat: '10.45572',lng:'105.61', address:'My Location  4'},*/}
-        {/*                    ]}*/}
-        {/*                    height={400}/>*/}
-
-        {/*  </Block>*/}
-
+          <NavHeader/>
           <NhatKy/>
-          <Block strong className="flex space-x-4">
-              <Button onClick={res}>Lưu</Button>
-          </Block>
-          <Block strong className="flex space-x-4">
-          </Block>
       </Page>
       </>
   );
