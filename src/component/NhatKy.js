@@ -54,18 +54,18 @@ const NhatKy =()=>{
         <>
             <BlockTitle>Nhật ký canh tác</BlockTitle>
             <List strongIos insetIos>
+                {/*<ListInput*/}
+                {/*    outline*/}
+                {/*    label="Tên công việc"*/}
+                {/*    type="text"*/}
+                {/*    placeholder="Nhập tên công việc"*/}
+                {/*    media={<i className="fa-solid fa-file-signature"></i>}*/}
+                {/*    value={nameCV}*/}
+                {/*    onChange={e=>setNameCV(e.target.value)}*/}
+                {/*/>*/}
                 <ListInput
                     outline
                     label="Tên công việc"
-                    type="text"
-                    placeholder="Nhập tên công việc"
-                    media={<i className="fa-solid fa-file-signature"></i>}
-                    value={nameCV}
-                    onChange={e=>setNameCV(e.target.value)}
-                />
-                <ListInput
-                    outline
-                    label="Loại công việc"
                     type="select"
                     dropdown
                     defaultValue="chung"
@@ -76,13 +76,15 @@ const NhatKy =()=>{
                     onChange={e=> setTypeCV(e.target.value)}
                 >
                     <option value='chung'>&nbsp;Công việc chung</option>
-                    <option value='thamvuon'>&nbsp;Thăm vườn</option>
+                    <option value='thamvuon'>&nbsp;Thăm ruộng</option>
                     <option value='tuoinuoc'>&nbsp;Tưới nước</option>
                     <option value='bonphan'>&nbsp;Bón phân</option>
                     <option value='bvtv'>&nbsp;Sử dụng thuốc BVTV</option>
-                    <option value='tiacanh'>&nbsp;Tỉa cành</option>
+                    <option value='tiacanh'>&nbsp;Xới đất</option>
                     <option value='thuhoach'>&nbsp;Thu Hoạch</option>
-                    <option value='khac'>&nbsp;Công việc khác</option>
+                    <option value='thuhoach'>&nbsp;Lên liếp</option>
+                    <option value='thuhoach'>&nbsp;Trồng khoai</option>
+                    <option value='khac'>&nbsp;Khác</option>
                 </ListInput>
 
 
@@ -109,23 +111,23 @@ const NhatKy =()=>{
                     value={dateCV}
                     onChange={e=>dateCV(e.target.value)}
                 />
-                <ListInput
-                    outline
-                    label="Vật tư BVTV"
-                    type="select"
-                    dropdown
-                    defaultValue="2023"
-                    placeholder="Chọn mùa vụ ..."
-                    media={<i className="fa-solid fa-bottle-water"></i>}
+                {/*<ListInput*/}
+                {/*    outline*/}
+                {/*    label="Vật tư BVTV"*/}
+                {/*    type="select"*/}
+                {/*    dropdown*/}
+                {/*    defaultValue="2023"*/}
+                {/*    placeholder="Chọn mùa vụ ..."*/}
+                {/*    media={<i className="fa-solid fa-bottle-water"></i>}*/}
 
-                    value={vattu}
-                    onChange={e=>setVattu(e.target.value)}
-                >
-                    <option value='2022'>&nbsp;2022</option>
-                    <option value='2023'>&nbsp;2023</option>
-                    <option value='2024'>&nbsp;2024</option>
+                {/*    value={vattu}*/}
+                {/*    onChange={e=>setVattu(e.target.value)}*/}
+                {/*>*/}
+                {/*    <option value='2022'>&nbsp;2022</option>*/}
+                {/*    <option value='2023'>&nbsp;2023</option>*/}
+                {/*    <option value='2024'>&nbsp;2024</option>*/}
 
-                </ListInput>
+                {/*</ListInput>*/}
                 <ListInput
                     outline
                     label="Mùa vụ"

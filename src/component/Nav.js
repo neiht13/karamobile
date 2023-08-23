@@ -115,14 +115,14 @@ const Nav = (props) => {
               }
               label={'Chứng nhận'}
           />
-          <TabbarLink
-          active={router.pathname === '/danhmuc'}
-              onClick={() => {router.push('/danhmuc')}}
-              icon={
-                  <i className="fa-solid fa-list"></i>
-              }
-              label={'Danh mục'}
-          />
+          {/*<TabbarLink*/}
+          {/*active={router.pathname === '/danhmuc'}*/}
+          {/*    onClick={() => {router.push('/danhmuc')}}*/}
+          {/*    icon={*/}
+          {/*        <i className="fa-solid fa-list"></i>*/}
+          {/*    }*/}
+          {/*    label={'Danh mục'}*/}
+          {/*/>*/}
 
       </Tabbar>
   );
