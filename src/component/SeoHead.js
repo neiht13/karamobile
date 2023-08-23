@@ -8,7 +8,6 @@ const defaultMeta = {
   siteName: 'KLCT',
   description:
     '',
-  // change base url of your web (without '/' at the end)
   url: 'https://khoailangchauthanhdt.vn',
   type: 'website',
   display: 'fullscreen',
@@ -18,8 +17,6 @@ const defaultMeta = {
 };
 
 /**
- * Next Head component populated with necessary SEO tags and title
- * props field used:
  * - title
  * - siteName
  * - description
