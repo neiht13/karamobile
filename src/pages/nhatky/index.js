@@ -39,6 +39,8 @@ export default function Home() {
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [activeLink, setActiveLink] = useState(null);
     const [scrollActive, setScrollActive] = useState(false);
+
+
     // useEffect (()=>{
     //     getDocs(collection(db, 'kara')).then(r=>{
     //             const data = r.docs.map(doc => doc.data())

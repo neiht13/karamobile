@@ -72,7 +72,7 @@ function MapExample(props) {
 
         markers && markers.forEach(marker =>{
             const fontAwesomeIcon = L.divIcon({
-                html: '<i className="w-5 h-5 fa-solid fa-location-dot fa-3x"></i>',
+                html: '<i class="w-5 h-5 fa-solid fa-location-dot fa-3x"></i>',
                 iconSize: [20, 20],
                 className: "text-primary"
             });
@@ -81,16 +81,16 @@ function MapExample(props) {
 
 
 
-        map.on('click', function(ev) {
-            console.log(ev)
-            const fontAwesomeIcon = L.divIcon({
-                html: '<i className="w-5 h-5 fa-solid fa-location-dot fa-bounce fa-3x"></i>',
-                iconSize: [20, 20],
-                className: "text-red-500"
-            });
-            L.marker([parseFloat(ev.latlng.lat), parseFloat(ev.latlng.lng)],{ icon:  fontAwesomeIcon}).addTo(map)
-                .bindPopup(`<a>Thêm điểm</a>`).openPopup();
-        });
+        // map.on('click', function(ev) {
+        //     console.log(ev)
+        //     const fontAwesomeIcon = L.divIcon({
+        //         html: '<i class="w-5 h-5 fa-solid fa-location-dot fa-bounce fa-3x"></i>',
+        //         iconSize: [20, 20],
+        //         className: "text-red-500"
+        //     });
+        //     L.marker([parseFloat(ev.latlng.lat), parseFloat(ev.latlng.lng)],{ icon:  fontAwesomeIcon}).addTo(map)
+        //         .bindPopup(`<a>Thêm điểm</a>`).openPopup();
+        // });
 
 
         circles && circles.forEach(circle=>{

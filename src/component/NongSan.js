@@ -1,11 +1,14 @@
 import {Block, BlockTitle, Button, List, ListInput} from "konsta/react";
 import * as dayjs from 'dayjs'
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {getAuth} from "firebase/auth";
 import firebaseApp from "@/firebase/config";
 
-const auth = getAuth(firebaseApp);
+import {doc, getFirestore, setDoc, getDoc} from "firebase/firestore";
+import {useRouter} from "next/router";
+const db = getFirestore(firebaseApp)
 
+const auth = getAuth(firebaseApp);
 const NongSan =()=>{
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     console.log(now)
@@ -14,11 +17,38 @@ const NongSan =()=>{
     const [donggoi, setDonggoi] = useState("")
     const [hsd, setHsd] = useState("")
     const [imageNS, setImageNS] = useState(null)
+    const [data, setData] = useState()
+    const currentUser = auth.currentUser?.email
+    useEffect(()=> {
+        fetchData()
+    },[])
+    const fetchData = async () => {
+        const docRef = doc(db, 'khoaicth', 'nongsan');
 
+        const docSnapshot = await getDoc(docRef);
+
+        if (docSnapshot.exists()) {
+            const d = docSnapshot.data()?.data?.filter(i=>i.user===currentUser);
+            console.log('d: ',d)
+            if (d && d.length>0) {
+                setNameNS(d[0].nameNS)
+                setDonggoi(d[0].donggoi)
+                setCssx(d[0].cssx)
+                setHsd(d[0].hsd)
+                setImageNS(d[0].imageNS)
+            }
+        } else {
+            console.log('Document not found!');
+        }
+    }
     const handleSave = () => {
-        alert(JSON.stringify({ user: auth.currentUser.email, dateUpdate: now,
-            nameNS, cssx, donggoi, hsd, imageNS
-        }))
+        setDoc(doc(db, "khoaicth", 'nongsan'), {
+            data: [
+                {
+                    idNS: (Math.random() + 1).toString(36).substring(7),
+                    user: auth.currentUser.email,
+                    nameNS, cssx, donggoi, hsd, imageNS, dateUpdate: now
+                }]})
     }
 
     return (

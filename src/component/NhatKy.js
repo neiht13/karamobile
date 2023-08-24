@@ -5,6 +5,8 @@ import {getAuth} from "firebase/auth";
 import firebaseApp from "@/firebase/config";
 import {doc, getFirestore, setDoc, getDoc} from "firebase/firestore";
 import {useRouter} from "next/router";
+import { getStorage, ref , uploadBytes } from "firebase/storage";
+
 const db = getFirestore(firebaseApp)
 
 const auth = getAuth(firebaseApp);
@@ -21,7 +23,32 @@ const NhatKy =()=>{
     const [data, setData] = useState([])
     const router = useRouter();
 
+    const uploadImage =()=>{
 
+        const storage = getStorage(firebaseApp);
+
+        const storageRef = ref(storage);
+        const imagesRef = ref(storage, 'images');
+
+        uploadBytes(storageRef, imageCV).then((snapshot) => {
+            console.log('Uploaded a blob or file!');
+        });
+    }
+    function handleImageChange(e) {
+        const selectedImage = e.target.files[0];
+
+        if (selectedImage) {
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const imageBlob = new Blob([event.target.result], { type: selectedImage.type });
+                // Giờ bạn có thể sử dụng imageBlob để thực hiện các thao tác khác
+                setImageCV(imageBlob)
+            };
+
+            reader.readAsArrayBuffer(selectedImage);
+        }
+    }
     console.log(now)
     useEffect(()=>{
         fetchData()
@@ -72,19 +99,19 @@ const NhatKy =()=>{
                     placeholder="Chọn loại công việc ..."
                     media={<i className="w-5 h-5 fa-solid fa-object-ungroup"></i>}
 
-                    value={typeCV}
-                    onChange={e=> setTypeCV(e.target.value)}
+                    value={nameCV}
+                    onChange={e=> setNameCV(e.target.value)}
                 >
-                    <option value='chung'>&nbsp;Công việc chung</option>
-                    <option value='thamvuon'>&nbsp;Thăm ruộng</option>
-                    <option value='tuoinuoc'>&nbsp;Tưới nước</option>
-                    <option value='bonphan'>&nbsp;Bón phân</option>
-                    <option value='bvtv'>&nbsp;Sử dụng thuốc BVTV</option>
-                    <option value='tiacanh'>&nbsp;Xới đất</option>
-                    <option value='thuhoach'>&nbsp;Thu Hoạch</option>
-                    <option value='thuhoach'>&nbsp;Lên liếp</option>
-                    <option value='thuhoach'>&nbsp;Trồng khoai</option>
-                    <option value='khac'>&nbsp;Khác</option>
+                    <option value='Công việc chung'>&nbsp;Công việc chung</option>
+                    <option value='Thăm ruộng'>&nbsp;Thăm ruộng</option>
+                    <option value='Tưới nước'>&nbsp;Tưới nước</option>
+                    <option value='Bón phân'>&nbsp;Bón phân</option>
+                    <option value='Sử dụng thuốc BVTV'>&nbsp;Sử dụng thuốc BVTV</option>
+                    <option value='Xới đất'>&nbsp;Xới đất</option>
+                    <option value='Thu Hoạch'>&nbsp;Thu Hoạch</option>
+                    <option value='Lên Liếp'>&nbsp;Lên liếp</option>
+                    <option value='Trồng khoai'>&nbsp;Trồng khoai</option>
+                    <option value='Công việc khác'>&nbsp;Công việc khác</option>
                 </ListInput>
 
 
@@ -109,7 +136,7 @@ const NhatKy =()=>{
                     media={<i className="w-5 h-5 fa-regular fa-calendar-check"></i>}
 
                     value={dateCV}
-                    onChange={e=>dateCV(e.target.value)}
+                    onChange={e=>setDateCV(e.target.value)}
                 />
                 {/*<ListInput*/}
                 {/*    outline*/}
