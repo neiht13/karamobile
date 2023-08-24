@@ -84,7 +84,7 @@ const NhatKy =()=>{
                 data: [
                     ...data,
                     {
-            idNK: (Math.random() + 1).toString(36).substring(7),
+            idNK: idNK || (Math.random() + 1).toString(36).substring(7),
             user: auth.currentUser.email, nameCV, typeCV, detailCV, muavu, vattu, dateCV, imageCV, dateUpdate: now
         }]}
             ).then(r  => router.reload()
