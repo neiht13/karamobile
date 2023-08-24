@@ -9,20 +9,14 @@ import {
   BlockTitle,
     Popover
 } from 'konsta/react';
-import { Link as LinkScroll } from "react-scroll";
 
 import React, {useEffect, useRef, useState} from "react";
 import { getFirestore,collection, getDocs, doc, setDoc } from "firebase/firestore";
 import firebaseApp from "./../firebase/config";
-import {data} from "autoprefixer";
-import {log} from "next/dist/server/typescript/utils";
-import SeoHead from "@/component/SeoHead";
 import {signOut, useSession} from "next-auth/react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {useAuth} from "@/firebase/authContext";
 import dynamic from "next/dynamic";
-import NhatKy from "@/component/NhatKy";
-import MobileChangelogEntry from "@/component/Timeline";
 import {useRouter} from "next/router";
 import TimelinePage from "@/component/Timeline";
 import Nav from "@/component/Nav";
@@ -35,7 +29,6 @@ export default function Home() {
     const [listBai, setListBai] = useState([])
     const [listScores, setListScores] = useState([])
     const [update, setUpdate] = useState(false)
-    console.log(auth.currentUser)
     const router = useRouter()
 
     const [activeLink, setActiveLink] = useState(null);

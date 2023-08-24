@@ -6,6 +6,7 @@ import firebaseApp from "@/firebase/config";
 import {doc, getFirestore, setDoc, getDoc} from "firebase/firestore";
 import {useRouter} from "next/router";
 import { getStorage, getDownloadURL, ref , uploadBytes } from "firebase/storage";
+import {useSearchParams} from "next/navigation";
 
 const db = getFirestore(firebaseApp)
 
@@ -20,22 +21,24 @@ const NhatKy =()=>{
     const [muavu, setMuavu] = useState("2023")
     const [vattu, setVattu] = useState("")
     const [dateCV, setDateCV] = useState(now)
-    const [imageCV, setImageCV] = useState('')
+    const [imageCV, setImageCV] = useState(null)
     const [data, setData] = useState([])
+    const [record, setRecord] = useState(null)
     const router = useRouter();
-
-    const uploadImage =()=>{
-
-        const storage = getStorage(firebaseApp);
-
-        const storageRef = ref(storage);
-        const imagesRef = ref(storage, 'images');
-
-        uploadBytes(storageRef, imageCV).then((snapshot) => {
-            console.log('Uploaded a blob or file!');
-        });
-    }
-    console.log(now)
+    const searchParams = useSearchParams()
+     const idNK = searchParams.get('idNK')
+    // const uploadImage =()=>{
+    //
+    //     const storage = getStorage(firebaseApp);
+    //
+    //     const storageRef = ref(storage);
+    //     const imagesRef = ref(storage, 'images');
+    //
+    //     uploadBytes(storageRef, imageCV).then((snapshot) => {
+    //         console.log('Uploaded a blob or file!');
+    //     });
+    // }
+    // console.log(now)
     useEffect(()=>{
         fetchData()
     },[])
@@ -45,11 +48,35 @@ const NhatKy =()=>{
         const docSnapshot = await getDoc(docRef);
 
         if (docSnapshot.exists()) {
-            setData(docSnapshot.data()?.data);
-            console.log('data: ',docSnapshot.data()?.data)
+            const d = docSnapshot.data()?.data;
+            if (d && d.length > 0) {
+                setData(d)
+                const t = d.filter(e => e.idNK === idNK)
+                console.log('d',d)
+                console.log('t',t)
+                if (t && t.length > 0) {
+                    console.log('t[0]',t[0]);
+                    setNameCV(t[0].nameCV)
+                    setDetailCV(t[0].detailCV)
+                    setMuavu(t[0].muavu)
+                    setDateCV(t[0].dateCV)
+                    setImageCV(t[0].imageCV)
+                }
+            }
         } else {
             console.log('Document not found!');
         }
+    }
+    const handleDel = () => {
+
+        const dataDelete = data.filter(item => item.idNK !== idNK);
+
+        setDoc(doc(db, "khoaicth", 'nhatky'), {
+                data: [
+                    ...dataDelete,
+                    ]}
+            ).then(r  => router.push('/')
+            );
     }
     const handleSave = () => {
       // alert(JSON.stringify({ user: auth.currentUser.email, nameCV,typeCV,detailCV,muavu,vattu,dateCV,imageCV, dateUpdate: now}))
@@ -66,30 +93,30 @@ const NhatKy =()=>{
 
     const [image, setImage] = useState(null);
 
-    const handleImageChange = (e) => {
-        const selectedImage = e.target.files[0];
-        setImage(selectedImage);
-    };
+    // const handleImageChange = (e) => {
+    //     const selectedImage = e.target.files[0];
+    //     setImage(selectedImage);
+    // };
+    //
+    // const handleUpload = () => {
+    //
+    //
+    //     const storageRef = ref(storage, 'images/'+(Math.random() + 1).toString(36).substring(7));
+    //     if (image) {
+    //         console.log(image)
+    //         uploadBytes(storageRef, image).then((snapshot) => {
+    //             console.log('Uploaded a blob or file!');
+    //         });
+    //     }
+    // };
 
-    const handleUpload = () => {
-
-
-        const storageRef = ref(storage, 'images/'+(Math.random() + 1).toString(36).substring(7));
-        if (image) {
-            console.log(image)
-            uploadBytes(storageRef, image).then((snapshot) => {
-                console.log('Uploaded a blob or file!');
-            });
-        }
-    };
-
-    getDownloadURL(ref(storage, 'images/3zuhwk'))
-        .then((url) => {
-            setImageCV(url)
-        })
-        .catch((error) => {
-            // Handle any errors
-        });
+    // getDownloadURL(ref(storage, 'images/3zuhwk'))
+    //     .then((url) => {
+    //         setImageCV(url)
+    //     })
+    //     .catch((error) => {
+    //         // Handle any errors
+    //     });
 
 
     return (
@@ -194,18 +221,19 @@ const NhatKy =()=>{
                     type="file"
                     placeholder="Chọn hình ảnh"
                     media={<i className="w-5 h-5 fa-solid fa-image"></i>}
-
-                    value={imageCV}
-                    onChange={e=>setImageCV(e.target.value)}
                 />
 
             </List>
 
-            <Block strong className="flex space-x-4">
+            <Block strong inset className="flex">
                 <Button onClick={handleSave}>Lưu</Button>
             </Block>
-            <Block strong className="flex space-x-4">
-            </Block>
+
+            {idNK && (<>
+                <Block  strong inset className="">
+                    <Button className="k-color-red" onClick={handleDel}>Xóa</Button>
+                </Block>
+            </>)}
         </>
     )
 }

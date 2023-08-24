@@ -15,17 +15,7 @@ module.exports = {
       },
     },
     colors: {
-      tomato: '#FF6347',
-      transparent: 'transparent',
-      current: 'currentColor',
-      'white': '#ffffff',
-      'purple': '#3f3cbb',
-      'midnight': '#121063',
-      'metal': '#565584',
-      'blue': '#0066ff',
-      'silver': '#ecebff',
-      'bubble-gum': '#ff77e9',
-      'bermuda': '#78dcca',
+
     },
   },
   plugins: [],
@@ -69,7 +59,12 @@ module.exports = konstaConfig({
     },  },
 
   konsta: {
-      primary: '#FF6347'
+    colors: {
+      // "primary" is the main app color, if not specified will be default to '#007aff'
+      primary: '#007aff',
+      red: '#ff0000',
+
+    }
   },
 
   variants: {

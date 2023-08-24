@@ -4,6 +4,7 @@ import * as dayjs from "dayjs";
 import {doc, getDoc, getFirestore} from "firebase/firestore";
 import firebaseApp from "@/firebase/config";
 import {getAuth} from "firebase/auth";
+import {useRouter} from "next/router";
 
 const db = getFirestore(firebaseApp)
 
@@ -12,6 +13,7 @@ const TimelinePage = () => {
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
     const [data, setData] = useState([])
     const currentUser = auth.currentUser?.email
+    const router = useRouter()
     useEffect(() => {
        fetchData()
     }, []);
@@ -92,6 +94,7 @@ const TimelinePage = () => {
                                     after={''}
                                     subtitle={item.dateCV}
                                     text={item.detailCV}
+                                    onClick={e=> router.push('/nhatky?idNK='+ item.idNK)}
                                     media={
                                         <img
                                             className="ios:rounded-lg material:rounded-full ios:w-20 material:w-10"
