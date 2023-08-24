@@ -4,8 +4,8 @@ import {useRouter} from "next/router";
 
 // Default value for some meta data
 const defaultMeta = {
-    title: 'KLCT',
-    siteName: 'KLCT',
+    title: 'KhoaiCT',
+    siteName: 'KhoaiCT',
     description:
         '',
     url: 'https://khoailangchauthanhdt.vn',
@@ -167,13 +167,14 @@ const SeoHead = (props) => {
                 <link key={linkProps.href} {...linkProps} />
             ))}
 
-            <meta name='msapplication-TileColor' content='#F53838'/>
+            <meta name='msapplication-TileColor' content='#9d174d'/>
             <meta
                 name='msapplication-TileImage'
                 content='/favicon/apple-touch-icon.png'
             />
             {/* Accent color on supported browser */}
-            <meta name='theme-color' content='#F53838'/>
+            <meta name='theme-color' content='#9d174d'/>
+            <meta name='display' content='fullscreen'/>
             <meta
                 name="viewport"
                 content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover"
