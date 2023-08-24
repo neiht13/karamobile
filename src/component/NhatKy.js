@@ -80,14 +80,16 @@ const NhatKy =()=>{
     }
     const handleSave = () => {
       // alert(JSON.stringify({ user: auth.currentUser.email, nameCV,typeCV,detailCV,muavu,vattu,dateCV,imageCV, dateUpdate: now}))
-            setDoc(doc(db, "khoaicth", 'nhatky'), {
+        const dataDelete = data.filter(item => item.idNK !== idNK);
+
+        setDoc(doc(db, "khoaicth", 'nhatky'), {
                 data: [
-                    ...data,
+                    ...dataDelete,
                     {
             idNK: idNK || (Math.random() + 1).toString(36).substring(7),
             user: auth.currentUser.email, nameCV, typeCV, detailCV, muavu, vattu, dateCV, imageCV, dateUpdate: now
         }]}
-            ).then(r  => router.reload()
+            ).then(r  => {idNK ? router.push('/') : router.reload()}
             );
     }
 
