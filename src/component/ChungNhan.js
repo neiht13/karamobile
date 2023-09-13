@@ -20,6 +20,7 @@ const ChungNhan =()=>{
     const [typeCN, setTypeCN] = useState("")
     const [dateCN, setDateCN] = useState(now)
     const [imageCN, setImageCN] = useState(null)
+    const [data, setData] = useState([])
     const currentUser = auth.currentUser?.email
 
     useEffect(()=> {
@@ -32,6 +33,8 @@ const ChungNhan =()=>{
 
         if (docSnapshot.exists()) {
             const d = docSnapshot.data()?.data?.filter(i=>i.user===currentUser);
+            const dd = docSnapshot.data()?.data?.filter(i=>i.user!==currentUser);
+            setData(dd)
             if (d && d.length>0) {
                 setNameCN(d[0].nameCN)
                 setNameCS(d[0].nameCS)
@@ -50,6 +53,7 @@ const ChungNhan =()=>{
         // alert(JSON.stringify({ user: auth.currentUser.email, nameCV,typeCV,detailCV,muavu,vattu,dateCV,imageCV, dateUpdate: now}))
         setDoc(doc(db, "khoaicth", 'chungnhan'), {
             data: [
+                ...data,
                 {
                     idNK: (Math.random() + 1).toString(36).substring(7),
                     user: auth.currentUser.email,

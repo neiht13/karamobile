@@ -29,6 +29,8 @@ const NongSan =()=>{
 
         if (docSnapshot.exists()) {
             const d = docSnapshot.data()?.data?.filter(i=>i.user===currentUser);
+            const dd = docSnapshot.data()?.data?.filter(i=>i.user!==currentUser);
+            setData(dd)
             console.log('d: ',d)
             if (d && d.length>0) {
                 setNameNS(d[0].nameNS)
@@ -44,11 +46,13 @@ const NongSan =()=>{
     const handleSave = () => {
         setDoc(doc(db, "khoaicth", 'nongsan'), {
             data: [
+                ...data,
                 {
                     idNS: (Math.random() + 1).toString(36).substring(7),
                     user: auth.currentUser.email,
                     nameNS, cssx, donggoi, hsd, imageNS, dateUpdate: now
-                }]})
+                }
+                ]})
     }
 
     return (
