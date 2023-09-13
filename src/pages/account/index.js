@@ -15,6 +15,7 @@ import {useAuth} from "@/firebase/authContext";
 import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
 import * as dayjs from "dayjs";
+import uploadImage from "@/ftp/uploadImage";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
@@ -70,7 +71,7 @@ export default function AccountPage() {
     const [role, setRole] = useState("Người dùng")
     const [diaChi, setDiaChi] = useState("")
     const [status, setStatus] = useState("Hoạt động")
-    const [image, setImage] = useState("")
+    const [image, setImage] = useState()
     const currentUser = auth.currentUser?.email
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
 
@@ -97,12 +98,13 @@ export default function AccountPage() {
         }
     }
     const handleSave = () => {
+        // uploadImage(image, 'thie')
         setDoc(doc(db, "khoaicth", 'account'), {
             data: [
                 {
                     idNK: (Math.random() + 1).toString(36).substring(7),
                     user: auth.currentUser.email,
-                    name, email, phone, diaChi, status, role, image,
+                    name, email, phone, diaChi, status, role, image : 'image',
                     dateUpdate: now
                 }]}
         ).then(r  => router.push('/')
@@ -189,7 +191,7 @@ export default function AccountPage() {
                     media={<i className="w-5 h-5 fa-solid fa-image"></i>}
 
                     value={image}
-                    onChange={e=>setImage(e.target.value)}
+                    onChange={e=>setImage(e.target.file[0])}
                 />
                       <MyAwesomeMap zoom={16}
                                     center={{lat: '10.4552072',lng:'105.629261'}}
