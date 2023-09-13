@@ -15,7 +15,6 @@ import {useAuth} from "@/firebase/authContext";
 import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
 import * as dayjs from "dayjs";
-import uploadImage from "@/ftp/uploadImage";
 
 const db = getFirestore(firebaseApp)
 const auth = getAuth(firebaseApp);
