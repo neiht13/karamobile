@@ -71,6 +71,7 @@ export default function AccountPage() {
     const [diaChi, setDiaChi] = useState("")
     const [status, setStatus] = useState("Hoạt động")
     const [image, setImage] = useState()
+    const [data, setData] = useState([])
     const currentUser = auth.currentUser?.email
     const [now, setNow] = useState(dayjs().format('YYYY-MM-DD'))
 
@@ -84,6 +85,8 @@ export default function AccountPage() {
 
         if (docSnapshot.exists()) {
             const d = docSnapshot.data()?.data?.filter(i=>i.user===currentUser);
+            const dd =  docSnapshot.data()?.data?.filter(i=>i.user!==currentUser);
+            setData(dd)
             if (d && d.length>0) {
                 setName(d[0].name)
                 setEmail(d[0].email)
@@ -100,6 +103,7 @@ export default function AccountPage() {
         // uploadImage(image, 'thie')
         setDoc(doc(db, "khoaicth", 'account'), {
             data: [
+                ...data,
                 {
                     idNK: (Math.random() + 1).toString(36).substring(7),
                     user: auth.currentUser.email,
